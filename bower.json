@@ -1,0 +1,9 @@
+{
+  "name": "devourr",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "backbone": "~1.1.0",
+    "handlebars": "~3.0.0"
+  }
+}

@@ -3,3 +3,5 @@ test/temp
 .sass-cache
 .tmp
 bower_components
+app/bower_components
+

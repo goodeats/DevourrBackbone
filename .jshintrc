@@ -15,12 +15,13 @@
     "undef": true,
     "unused": true,
     "strict": true,
+    "Handlebars": true
     "jquery": true,
     "globals": {
         "DevourrApp": true,
         "devourrapp": true,
         "_": false,
-        "Backbone": false,
+        "Backbone": true,
         "JST": false,
         "beforeEach": false,
         "describe": false,

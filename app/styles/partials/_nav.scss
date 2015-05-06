@@ -1,9 +1,23 @@
 #navbar {
   width: 100%;
   height: 45px;
-  background-color: #abc;
+  background-color: #519118;
+  text-align:right;
+  line-height:45px;
 }
 
-.navheaders {
-  display: inline;
+#logo {
+  float: left;
+  font-weight: bold;
 }
+
+li {
+  display: inline;
+  color: #fff;
+  a {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 10px;
+  }
+}
+

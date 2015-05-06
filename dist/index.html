@@ -5,4 +5,18 @@
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/b8edf47f.main.js></script>  
+      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/f83489db.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class="posts">
+      {{#each posts}}
+        <div class="moreposts">
+          <div class="moremoreposts">
+          <h2><a href="#/posts/{{id}}" >{{title}}</a></h2>
+          <ul>
+            <li><span>Decription:</span> {{description}}</li>
+            <li><span>pic:</span> {{due_date}}</li>
+            <li><span>Location:</span> {{location}}</li>
+            <li><a href="/#/projects/{{id}}">View this post</a></li>
+          </ul>
+          </div>
+        </div>
+      {{/each}}
+      </div></script>  

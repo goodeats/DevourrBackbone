@@ -47,6 +47,23 @@
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
+    <script type="text/x-handlebars-template" id="postsTemplate">
+      <div class="posts">
+      {{#each posts}}
+        <div class="moreposts">
+          <div class="moremoreposts">
+          <h2><a href="#/posts/{{id}}" >{{title}}</a></h2>
+          <ul>
+            <li><span>Decription:</span> {{description}}</li>
+            <li><span>pic:</span> {{due_date}}</li>
+            <li><span>Location:</span> {{location}}</li>
+            <li><a href="/#/projects/{{id}}">View this post</a></li>
+          </ul>
+          </div>
+        </div>
+      {{/each}}
+      </div>
+    </script>
 
 </body>
 </html>

@@ -21,10 +21,10 @@ Router = Backbone.Router.extend({
     'about': 'about',
     'users': 'users', // http://localhost:9000/users
     'users/:id': 'user',  //http://localhost:9000/#/users/1
-    'projects': 'projects', //http://localhost:9000/#/projects
-    'projects/:id': 'project',  //http://localhost:9000/#/projects/1
-    'new-project': 'newProject',//http://localhost:9000/#/new-project
-    'update-project': 'updateProject',//http://localhost:9000/#/update-project
+    'posts': 'posts', //http://localhost:9000/#/posts
+    'posts/:id': 'post',  //http://localhost:9000/#/posts/1
+    'new-post': 'newpost',//http://localhost:9000/#/new-post
+    'update-post': 'updatepost',//http://localhost:9000/#/update-post
     'tasks': 'tasks', //http://localhost:9000/#/tasks
     'tasks/:id': 'task',  //http://localhost:9000/#/tasks/1
   },
@@ -37,6 +37,24 @@ Router = Backbone.Router.extend({
     $container.empty().load('partials/about.html',function(response,status,xhr){
     // var template = Handlebars.compile($('#aboutTemplate').html());
     // debugger
+    });
+  },
+
+  posts: function(){
+    $container.empty();
+    $.ajax({
+      url: App.url + '/posts',
+      type: 'GET'
+    }).done(function(response) {
+      console.log("success");
+      var template = Handlebars.compile($('#postsTemplate').html());
+      $container.html(template({
+        posts: response.posts
+      }));
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      trace('fail!', jqXHR, textStatus, errorThrown);
+    }).always(function(response) {
+      trace(response);
     });
   }
 

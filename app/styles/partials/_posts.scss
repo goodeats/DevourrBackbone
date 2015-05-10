@@ -1,0 +1,11 @@
+.posts {
+  background: $light-orange;
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  a {
+    text-decoration: none;
+    color: $link-color;
+  }
+}

@@ -1,16 +1,14 @@
-// bower:scss
-// endbower
+// mixins and variables
+@import "modules/variables";
 
+// partial styles
+@import "partials/body";
 @import "partials/nav";
+@import "partials/post";
+@import "partials/posts";
 
 * {
   margin: 0;
-}
-
-body {
-  background: #8ECB57;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
 }
 
 .browsehappy {

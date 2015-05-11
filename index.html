@@ -1,16 +1,16 @@
-<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=/2b28ac2c.devourr-icon.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/46698977.main.css> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <body> <!--[if lt IE 10]>
+<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=/2b28ac2c.devourr-icon.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/388f22e2.main.css>  <body> <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]--> <div id=header></div> <div id=container></div> <script src=scripts/d41d8cd9.vendor.js></script> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --> <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/f83489db.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
+      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/8cf85e9b.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
       {{#each posts}}
         <div class='post'>
           <div class='postUserProfile'>
             <a href='#/users/{{user.id}}'><img class='postProfileImage' src='{{user.avatar}}'></a>
-            <span>{{user.username}}</span>
+            <span><a href='#/users/{{user.id}}'>@{{user.username}}</a></span>
           </div>
           <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
           <div class='imageSpace'><a href='/#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
@@ -18,4 +18,45 @@
           <p><i class="fa fa-map-marker"></i> {{location}}</p>
         </div>
       {{/each}}
-      </div></script>
+      </div></script> <script type=text/x-handlebars-template id=postTemplate><a class='backLink' href='#/posts'>Back to Posts</a>
+      <div class='posts'>
+        <div class='post'>
+          <div class='postUserProfile'>
+            <a href='#/users/{{post.user.id}}'><img class='postProfileImage' src='{{post.user.avatar}}'></a>
+            <span>{{post.user.username}}</span>
+          </div>
+          <h2><a href='#/posts/{{post.id}}'>{{post.title}}</a></h2>
+          <div class='imageSpace'><a href='/#/posts/{{post.id}}'><img class='postImage' src='{{post.picture}}'></a></div>
+          <p>{{post.description}}</p>
+          <p><i class="fa fa-map-marker"></i> {{post.location}}</p>
+        </div>
+      </div></script> <script type=text/x-handlebars-template id=userTemplate><a class='backLink' href='#/posts'>Back to Posts</a>
+
+      <div class='user'>
+
+        <div class='userCard'>
+          <h2 class='profileUserName'>{{user.name}}</h2>
+          <h4>@{{user.username}}</h4>
+          <div class='profileImageSpace'>
+            <img src='{{user.avatar}}'>
+          </div>
+          <p>{{user.bio}}</p>
+          <p><a href='{{user.website}}'>{{user.website}}</a></p>
+          <p>{{user.location}}</p>
+        </div>
+
+        <div class='posts'>
+          {{#each user.posts}}
+          <div class='post'>
+            <div class='postUserProfile'>
+              <a href='#/users/{{user.id}}'><img class='postProfileImage' src='{{user.avatar}}'></a>
+              <span>{{user.username}}</span>
+            </div>
+            <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
+            <div class='imageSpace'><a href='/#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
+            <p>{{description}}</p>
+            <p><i class="fa fa-map-marker"></i> {{location}}</p>
+          </div>
+          {{/each}}
+        </div>
+      </div></script>  

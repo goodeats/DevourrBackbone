@@ -1,0 +1,31 @@
+.user {
+  background: $light-orange;
+  margin: 20px;
+  display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  a {
+    text-decoration: none;
+    color: $link-color;
+  }
+}
+
+
+.userCard {
+  width: 25%;
+  margin: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: -4px 4px 0 $black-50;
+  * {
+    margin-bottom: 10px;
+  }
+  h2 {
+    color: $link-color;
+  }
+  h4 {
+    color: $black-50;
+  }
+}

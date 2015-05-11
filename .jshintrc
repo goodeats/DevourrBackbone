@@ -20,6 +20,7 @@
     "globals": {
         "DevourrApp": true,
         "devourrapp": true,
+        "$": false,
         "_": false,
         "Backbone": true,
         "JST": false,

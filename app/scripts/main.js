@@ -75,6 +75,26 @@ Router = Backbone.Router.extend({
     }).always(function(response) {
       trace(response);
     });
+  },
+
+  user: function(id){
+    $container.empty();
+    $.ajax({
+      url: App.url + '/users/' + id,
+      type: 'GET',
+    })
+    .done(function(response) {
+      console.log(response);
+      var template = Handlebars.compile($('#userTemplate').html());
+      $container.html(template({
+        user: response.user
+      }));
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      trace('fail!', jqXHR, textStatus, errorThrown);
+    }).always(function(response) {
+      trace(response);
+    });
 
   }
 

@@ -1,0 +1,21 @@
+.about {
+
+  .aboutText {
+    text-align: left;
+    display: table;
+    background: #fff;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 0 auto;
+    h1 {
+      color: $link-color;
+    }
+  }
+  * {
+    margin: 10px;
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}

@@ -46,7 +46,6 @@ Router = Backbone.Router.extend({
       url: App.url + '/posts',
       type: 'GET'
     }).done(function(response) {
-      console.log("success");
       var template = Handlebars.compile($('#postsTemplate').html());
       $container.html(template({
         posts: response.posts
@@ -56,6 +55,27 @@ Router = Backbone.Router.extend({
     }).always(function(response) {
       trace(response);
     });
+  },
+
+  post: function (id){
+    $container.empty();
+    $.ajax({
+      url: App.url + '/posts/' + id,
+      type: 'GET',
+    })
+    .done(function(response) {
+      console.log(response);
+      var template = Handlebars.compile($('#postTemplate').html());
+      $container.html(template({
+        post: response.post
+      }));
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      trace('fail!', jqXHR, textStatus, errorThrown);
+    }).always(function(response) {
+      trace(response);
+    });
+
   }
 
 });

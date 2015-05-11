@@ -2,25 +2,37 @@
   width: 25%;
   background: #fff;
   margin: 20px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 6px;
   box-shadow: -4px 4px 0 $black-50;
   h2 {
     text-align: center;
   }
+  p {
+    padding: 10px;
+  }
+}
+
+.postUserProfile span {
+  position: absolute;
+  margin: 3px;
+}
+
+.postProfileImage {
+  height: 50px;
+  width: 50px;
 }
 
 .imageSpace {
   height: 150px;
-  width: 150px;
-  vertical-align: middle;
-  display: table-cell;
+  width: 100%;
+  display: inline-block;
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.postImage {
+.imageSpace .postImage {
   max-height: 150px;
-  max-width: 150px;
-  display: inline-block;
-  margin: 0 auto;
+  max-width: 100%;
 }

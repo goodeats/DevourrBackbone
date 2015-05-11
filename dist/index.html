@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=/2b28ac2c.devourr-icon.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/388f22e2.main.css>  <body> <!--[if lt IE 10]>
+<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=/2b28ac2c.devourr-icon.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/339dd3ed.main.css> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <body> <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]--> <div id=header></div> <div id=container></div> <script src=scripts/f53edcc2.vendor.js></script> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --> <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -18,7 +18,7 @@
           <p><i class="fa fa-map-marker"></i> {{location}}</p>
         </div>
       {{/each}}
-      </div></script> <script type=text/x-handlebars-template id=postTemplate><a class='backLink' href='#/posts'>Back to Posts</a>
+      </div></script> <script type=text/x-handlebars-template id=postTemplate><a class='pageLink' href='#/posts'>Back to Posts</a>
       <div class='posts'>
         <div class='post'>
           <div class='postUserProfile'>
@@ -30,19 +30,22 @@
           <p>{{post.description}}</p>
           <p><i class="fa fa-map-marker"></i> {{post.location}}</p>
         </div>
-      </div></script> <script type=text/x-handlebars-template id=userTemplate><a class='backLink' href='#/posts'>Back to Posts</a>
+      </div></script> <script type=text/x-handlebars-template id=userTemplate><a class='pageLink' href='#/posts'>Back to Posts</a>
+      <a class='pageLink' href='#/posts'>New Post</a>
 
       <div class='user'>
 
-        <div class='userCard'>
-          <h2 class='profileUserName'>{{user.name}}</h2>
-          <h4>@{{user.username}}</h4>
-          <div class='profileImageSpace'>
-            <img src='{{user.avatar}}'>
+        <div class='userCardSpace'>
+          <div class='userCard'>
+            <h2 class='profileUserName'>{{user.name}}</h2>
+            <h4>@{{user.username}}</h4>
+            <div class='profileImageSpace'>
+              <img class='profileImage' src='{{user.avatar}}'>
+            </div>
+            <p>{{user.bio}}</p>
+            <p><a href='{{user.website}}' target='_blank'>{{user.website}}</a></p>
+            <p>{{user.location}}</p>
           </div>
-          <p>{{user.bio}}</p>
-          <p><a href='{{user.website}}' target='_blank'>{{user.website}}</a></p>
-          <p>{{user.location}}</p>
         </div>
 
         <div class='posts'>
@@ -59,4 +62,4 @@
           </div>
           {{/each}}
         </div>
-      </div></script>  
+      </div></script>

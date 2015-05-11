@@ -27,10 +27,10 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/underscore/underscore.js"></script>
-    <script src="bower_components/backbone/backbone.js"></script>
-    <script src="bower_components/handlebars/handlebars.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/underscore/underscore.js"></script>
+    <script src="/bower_components/backbone/backbone.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -71,7 +71,7 @@
         <div class='post'>
           <div class='postUserProfile'>
             <a href='#/users/{{post.user.id}}'><img class='postProfileImage' src='{{post.user.avatar}}'></a>
-            <span>{{post.user.username}}</span>
+            <span><a href='#/users/{{post.user.id}}'>{{post.user.username}}</a></span>
           </div>
           <h2><a href='#/posts/{{post.id}}'>{{post.title}}</a></h2>
           <div class='imageSpace'><a href='/#/posts/{{post.id}}'><img class='postImage' src='{{post.picture}}'></a></div>

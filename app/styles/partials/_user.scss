@@ -1,14 +1,15 @@
 .user {
   // position: relative;
   height: 100%;
-  background: $light-orange;
+  background: $light-yellow;
+  border-radius: 6px;
   margin: 20px;
   display: flex;
   // flex-direction: row;
   // flex-wrap: wrap;
   a {
     text-decoration: none;
-    color: $link-color;
+    color: $dark-orange;
   }
   .posts {
     width: 100%;
@@ -34,7 +35,7 @@
     margin-bottom: 10px;
   }
   h2 {
-    color: $link-color;
+    color: $dark-orange;
   }
   h4 {
     color: $black-50;

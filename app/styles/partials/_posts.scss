@@ -1,5 +1,6 @@
 .posts {
-  background: $light-orange;
+  background: $light-yellow;
+  border-radius: 6px;
   margin: 20px;
   display: flex;
   flex-direction: row;
@@ -7,6 +8,6 @@
   justify-content: center;
   a {
     text-decoration: none;
-    color: $link-color;
+    color: $dark-orange;
   }
 }

@@ -66,7 +66,7 @@
     </script>
 
     <script type='text/x-handlebars-template' id='postTemplate'>
-      <a class='backLink' href='#/posts'>Back to Posts</a>
+      <a class='pageLink' href='#/posts'>Back to Posts</a>
       <div class='posts'>
         <div class='post'>
           <div class='postUserProfile'>
@@ -82,19 +82,22 @@
     </script>
 
     <script type='text/x-handlebars-template' id='userTemplate'>
-      <a class='backLink' href='#/posts'>Back to Posts</a>
+      <a class='pageLink' href='#/posts'>Back to Posts</a>
+      <a class='pageLink' href='#/posts'>New Post</a>
 
       <div class='user'>
 
-        <div class='userCard'>
-          <h2 class='profileUserName'>{{user.name}}</h2>
-          <h4>@{{user.username}}</h4>
-          <div class='profileImageSpace'>
-            <img src='{{user.avatar}}'>
+        <div class='userCardSpace'>
+          <div class='userCard'>
+            <h2 class='profileUserName'>{{user.name}}</h2>
+            <h4>@{{user.username}}</h4>
+            <div class='profileImageSpace'>
+              <img class='profileImage' src='{{user.avatar}}'>
+            </div>
+            <p>{{user.bio}}</p>
+            <p><a href='{{user.website}}' target='_blank'>{{user.website}}</a></p>
+            <p>{{user.location}}</p>
           </div>
-          <p>{{user.bio}}</p>
-          <p><a href='{{user.website}}' target='_blank'>{{user.website}}</a></p>
-          <p>{{user.location}}</p>
         </div>
 
         <div class='posts'>

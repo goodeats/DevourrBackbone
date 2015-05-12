@@ -10,18 +10,21 @@ body {
   border-radius: 6px;
   margin: 20px;
   padding: 10px;
-  -moz-box-shadow: 10px 10px 5px #888;
-  -webkit-box-shadow: 10px 10px 5px #888;
-  box-shadow: 5px 5px 2.5px #888;
+  @include box-shadow(0, 10px, 10px, -10px, #000);
+  // -moz-box-shadow: 10px 10px 5px #888;
+  // -webkit-box-shadow: 10px 10px 5px #888;
+  // box-shadow: 5px 5px 2.5px #888;
 }
 
 .posts {
-  -moz-box-shadow: 10px 10px 5px #888;
-  -webkit-box-shadow: 10px 10px 5px #888;
-  box-shadow: 10px 10px 5px #888;
+  @include box-shadow(0, 10px, 10px, -10px, #000);
+  // -moz-box-shadow: 10px 10px 5px #888;
+  // -webkit-box-shadow: 10px 10px 5px #888;
+  // box-shadow: 10px 10px 5px #888;
   .post {
-    -moz-box-shadow: 10px 10px 5px #888;
-    -webkit-box-shadow: 10px 10px 5px #888;
-    box-shadow: 10px 10px 5px #888;
+    @include box-shadow(0, 10px, 10px, -10px, #000);
+    // -moz-box-shadow: 10px 10px 5px #888;
+    // -webkit-box-shadow: 10px 10px 5px #888;
+    // box-shadow: 10px 10px 5px #888;
   }
 }

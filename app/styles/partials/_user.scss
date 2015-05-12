@@ -10,6 +10,7 @@
   }
   .posts {
     width: 100%;
+    @include box-shadow;
     .post {
       width: 40%;
     }
@@ -26,7 +27,7 @@
   padding: 15px;
   background: #fff;
   border-radius: 6px;
-  box-shadow: -4px 4px 0 $black-50;
+  @include box-shadow(0, 10px, 10px, -10px, #000);
   * {
     margin-bottom: 10px;
   }
@@ -52,7 +53,7 @@
   width: 100%;
   background: #fff;
   border-radius: 6px;
-  box-shadow: -4px 4px 0 $black-50;
+  @include box-shadow(0, 10px, 10px, -10px, #000);
   display: inline-flex;
   justify-content: center;
   vertical-align: middle;

@@ -6,9 +6,10 @@
   line-height:50px;
   font-family: $header-font;
   margin-bottom: 20px;
-  -moz-box-shadow: 10px 10px 5px #888;
-    -webkit-box-shadow: 10px 10px 5px #888;
-    box-shadow: 5px 5px 2.5px #888;
+  @include box-shadow(0, 10px, 10px, -10px, #000);
+  // -moz-box-shadow: 10px 10px 5px #888;
+  //   -webkit-box-shadow: 10px 10px 5px #888;
+  //   box-shadow: 5px 5px 2.5px #888;
   li {
   display: inline;
   color: $nav-font-color;

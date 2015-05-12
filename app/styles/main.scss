@@ -13,6 +13,7 @@
 
 * {
   @include defaults;
+  box-sizing: border-box;
 }
 
 .browsehappy {

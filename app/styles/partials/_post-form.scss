@@ -4,11 +4,29 @@
 
 .post-form {
   @include brand-shadow;
-  text-align: left;
+  width: 40%;
+  text-align: center;
   display: table;
   background: #fff;
   border-radius: 6px;
   padding: 10px;
   margin: 0 auto;
   margin-bottom: 20px;
+  h1 {
+    float: center;
+  }
+}
+
+#new-post-form div {
+  text-align: left;
+  margin: 20px;
+  font-size: $large-font-size;
+  input {
+    border-radius: 6px;
+    line-height: 27px;
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    width: 50%;
+  }
 }

@@ -57,10 +57,9 @@
   border-radius: 6px;
   @include brand-shadow;
   display: inline-flex;
-  justify-content: center;
-  vertical-align: middle;
   text-align: center;
   .stat {
     margin: 20px;
+    flex-grow: 1;
   }
 }

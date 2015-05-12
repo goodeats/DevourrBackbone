@@ -4,7 +4,7 @@
   border-radius: 6px;
   margin: 20px;
   display: flex;
-  @include box-shadow(0, 10px, 10px, -10px, #000);
+  @include brand-shadow;
   a {
     text-decoration: none;
     color: $dark-orange;
@@ -28,7 +28,7 @@
   padding: 15px;
   background: #fff;
   border-radius: 6px;
-  @include box-shadow(0, 10px, 10px, -10px, #000);
+  @include brand-shadow;
   * {
     margin-bottom: 10px;
   }
@@ -54,7 +54,7 @@
   width: 100%;
   background: #fff;
   border-radius: 6px;
-  @include box-shadow(0, 10px, 10px, -10px, #000);
+  @include brand-shadow;
   display: inline-flex;
   justify-content: center;
   vertical-align: middle;

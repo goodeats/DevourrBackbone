@@ -3,7 +3,7 @@
 }
 
 .post-form {
-  @include box-shadow(0, 10px, 10px, -10px, #000);
+  @include brand-shadow;
   text-align: left;
   display: table;
   background: #fff;

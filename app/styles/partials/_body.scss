@@ -10,21 +10,17 @@ body {
   border-radius: 6px;
   margin: 20px;
   padding: 10px;
-  @include box-shadow(0, 10px, 10px, -10px, #000);
+  @include brand-shadow;
+  // growth in mixin use over time...
+  // @include box-shadow(0, 10px, 10px, -10px, #000);
   // -moz-box-shadow: 10px 10px 5px #888;
   // -webkit-box-shadow: 10px 10px 5px #888;
   // box-shadow: 5px 5px 2.5px #888;
 }
 
 .posts {
-  @include box-shadow(0, 10px, 10px, -10px, #000);
-  // -moz-box-shadow: 10px 10px 5px #888;
-  // -webkit-box-shadow: 10px 10px 5px #888;
-  // box-shadow: 10px 10px 5px #888;
+  @include brand-shadow;
   .post {
-    @include box-shadow(0, 10px, 10px, -10px, #000);
-    // -moz-box-shadow: 10px 10px 5px #888;
-    // -webkit-box-shadow: 10px 10px 5px #888;
-    // box-shadow: 10px 10px 5px #888;
+    @include brand-shadow;
   }
 }

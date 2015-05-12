@@ -3,7 +3,10 @@
   margin: 0 auto;
 }
 .aboutText {
-  @include box-shadow(0, 10px, 10px, -10px, #000);
+  @include brand-shadow;
+  // growth in mixin use over time...
+  // @include box-shadow(0, 10px, 10px, -10px, #000);
+  // box-shadow: -4px 4px 0 $black-50;
   text-align: left;
   display: table;
   background: #fff;
@@ -11,7 +14,6 @@
   padding: 10px;
   margin: 0 auto;
   margin-bottom: 20px;
-  // box-shadow: -4px 4px 0 $black-50;
   h1 {
     color: $dark-orange;
   }

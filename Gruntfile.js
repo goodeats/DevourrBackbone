@@ -314,6 +314,8 @@ module.exports = function (grunt) {
     copy: {
       dist: {
         files: [{
+
+          // original setup, changing in order to try to get a vendor.js
           expand: true,
           dot: true,
           cwd: '<%= config.app %>',
@@ -324,6 +326,15 @@ module.exports = function (grunt) {
             '{,*/}*.html',
             'styles/fonts/{,*/}*.*'
           ]
+
+          //for font-awesome
+          // expand: true,
+          // dot: true,
+          // cwd: 'bower_components/font-awesome',
+          // src: ['fonts/*.*'],
+          // dest: '<%= config.dist %>'
+
+
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
           dest: '<%= config.dist %>/.htaccess'
@@ -337,6 +348,8 @@ module.exports = function (grunt) {
         src: '{,*/}*.css'
       }
     },
+
+
 
     // Run some tasks in parallel to speed up build process
     concurrent: {

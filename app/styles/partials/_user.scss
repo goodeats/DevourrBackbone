@@ -1,12 +1,9 @@
 .user {
-  // position: relative;
   height: 100%;
   background: $light-yellow;
   border-radius: 6px;
   margin: 20px;
   display: flex;
-  // flex-direction: row;
-  // flex-wrap: wrap;
   a {
     text-decoration: none;
     color: $dark-orange;
@@ -25,7 +22,6 @@
 }
 
 .userCard {
-  // width: 25%;
   margin: 20px;
   padding: 15px;
   background: #fff;
@@ -48,5 +44,20 @@
   .profileImage {
     max-height: 250px;
     max-width: 100%;
+  }
+}
+
+.userStats {
+  height: 100px;
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: -4px 4px 0 $black-50;
+  display: inline-flex;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  .stat {
+    margin: 20px;
   }
 }

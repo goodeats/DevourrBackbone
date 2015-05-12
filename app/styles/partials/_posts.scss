@@ -1,14 +1,17 @@
 .posts {
   background: $light-yellow;
-  border-radius: 6px;
+  // border-radius: 6px;
   margin: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   a {
     text-decoration: none;
     color: $dark-orange;
   }
 }
+
+//box shadow posts

@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=http://i.imgur.com/V47dULCh.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/10f8d9bc.main.css> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <body> <!--[if lt IE 10]>
+<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=http://i.imgur.com/V47dULCh.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/510616cf.main.css> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <body> <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]--> <div id=header></div> <div id=container> <div class=centered> <img src=http://i.imgur.com/dLEgGNj.png> </div> </div> <script src=scripts/f53edcc2.vendor.js></script> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --> <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -60,12 +60,20 @@
               <p>{{user.posts.length}}</p>
             </div>
             <div class='stat'>
-              <p>Posts</p>
-              <p>{{user.posts.length}}</p>
+              <p>Following</p>
+              <p>{{user.following.length}}</p>
             </div>
             <div class='stat'>
-              <p>Posts</p>
-              <p>{{user.posts.length}}</p>
+              <p>Followers</p>
+              <p>{{user.followers.length}}</p>
+            </div>
+            <div class='stat'>
+              <p>Liked</p>
+              <p>{{user.likes.length}}</p>
+            </div>
+            <div class='stat'>
+              <p>Saved</p>
+              <p>{{user.saved.length}}</p>
             </div>
           </div>
           {{#each user.posts}}

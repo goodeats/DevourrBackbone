@@ -11,22 +11,34 @@
   border-radius: 6px;
   padding: 10px;
   margin: 0 auto;
+  margin-top: 60px;
   margin-bottom: 20px;
+  font-size: $large-font-size;
   h1 {
     float: center;
+  }
+  button {
+    background: $light-yellow;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: $large-font-size;
   }
 }
 
 #new-post-form div {
   text-align: left;
   margin: 20px;
-  font-size: $large-font-size;
+
   input {
     border-radius: 6px;
     line-height: 27px;
-    font-size: 20px;
+    // font-size: 20px;
+    font-size: $large-font-size;
     position: absolute;
     left: 50%;
     width: 50%;
+    background: $light-yellow;
+    padding: 3px;
   }
 }

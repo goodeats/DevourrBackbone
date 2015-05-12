@@ -7,15 +7,6 @@
   font-family: $header-font;
   margin-bottom: 20px;
   @include brand-shadow;
-  li {
-  display: inline;
-  color: $nav-font-color;
-    a {
-      text-decoration: none;
-      color: $nav-font-color;
-      margin-right: 10px;
-    }
-  }
 }
 
 .logoImage {
@@ -24,10 +15,26 @@
 }
 
 .logo {
-
   font-size: 1.5em;
   font-weight: bold;
   text-shadow: -2px 2px $link-color;
   vertical-align: middle;
+}
 
+.navListItem {
+  padding: 10px;
+  display: inline;
+  color: $nav-font-color;
+  a {
+    text-decoration: none;
+    color: $nav-font-color;
+  }
+}
+
+.navListItem:hover {
+  background: $light-yellow;
+  border-radius: 6px;
+  a {
+    color: $link-color;
+  }
 }

@@ -31,9 +31,4 @@ body {
   z-index: 100;
 }
 
-.posts {
-  @include brand-shadow;
-  .post {
-    @include brand-shadow;
-  }
-}
+

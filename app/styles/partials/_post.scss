@@ -3,7 +3,8 @@
   background: #fff;
   margin: 20px;
   padding: 15px;
-  // border-radius: 6px;
+  border-radius: 6px;
+  @include brand-shadow;
   h2 {
     text-align: center;
   }

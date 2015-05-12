@@ -72,6 +72,7 @@
     <script type='text/x-handlebars-template' id='postTemplate'>
       <div class='pageLinkSpace'>
         <a class='pageLink' href='#/posts'>Back to Posts</a>
+        <a class='pageLink' href='#/posts/{{post.id}}' id='edit-post'>Edit Posts</a>
       </div>
 
       <div class='posts'>
@@ -91,7 +92,7 @@
     <script type='text/x-handlebars-template' id='userTemplate'>
       <div class='pageLinkSpace'>
         <a class='pageLink' href='#/posts'>Back to Posts</a>
-        <a class='pageLink' href='#/new-post'>New Post</a>
+        <a class='pageLink' href='#/new-post' id='new-post'>New Post</a>
       </div>
 
       <div class='user'>

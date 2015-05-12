@@ -24,6 +24,7 @@ Router = Backbone.Router.extend({
     'posts': 'posts', //http://localhost:9000/#/posts
     'posts/:id': 'post',  //http://localhost:9000/#/posts/1
     'new-post': 'newpost',//http://localhost:9000/#/new-post
+    'edit-post': 'editpost',//http://localhost:9000/#/edit-post
     'update-post': 'updatepost',//http://localhost:9000/#/update-post
     'tasks': 'tasks', //http://localhost:9000/#/tasks
     'tasks/:id': 'task',  //http://localhost:9000/#/tasks/1
@@ -35,6 +36,26 @@ Router = Backbone.Router.extend({
 
   about: function(){
     $container.empty().load('partials/about.html');
+  },
+
+  user: function(id){
+    $container.empty();
+    $.ajax({
+      url: App.url + '/users/' + id,
+      type: 'GET',
+    })
+    .done(function(response) {
+      console.log(response);
+      var template = Handlebars.compile($('#userTemplate').html());
+      $container.html(template({
+        user: response.user
+      }));
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      trace('fail!', jqXHR, textStatus, errorThrown);
+    }).always(function(response) {
+      trace(response);
+    });
   },
 
   posts: function(){
@@ -66,26 +87,15 @@ Router = Backbone.Router.extend({
       $container.html(template({
         post: response.post
       }));
-    })
-    .fail(function(jqXHR, textStatus, errorThrown) {
-      trace('fail!', jqXHR, textStatus, errorThrown);
-    }).always(function(response) {
-      trace(response);
-    });
-  },
 
-  user: function(id){
-    $container.empty();
-    $.ajax({
-      url: App.url + '/users/' + id,
-      type: 'GET',
-    })
-    .done(function(response) {
-      console.log(response);
-      var template = Handlebars.compile($('#userTemplate').html());
-      $container.html(template({
-        user: response.user
-      }));
+      $('#edit-post').on('click', function(){
+        var locate = window.location.hash;
+        var point = locate.lastIndexOf('/');
+        var post_id = parseInt(locate.substring(point+1, locate.length));
+        trace('Editing post ID: ' + post_id + "!");
+        App.editpost(post_id);
+      });
+
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       trace('fail!', jqXHR, textStatus, errorThrown);
@@ -95,7 +105,7 @@ Router = Backbone.Router.extend({
   },
 
   newpost: function(){
-    $('#container').empty().load('partials/post-form.html', function(response,status,xhr){
+    $('#container').empty().load('partials/new-post-form.html', function(response,status,xhr){
       var $form = $('#new-post-form');
       $form.on('submit',function(event){
         App.newPostForm(event,$form,router);
@@ -105,8 +115,6 @@ Router = Backbone.Router.extend({
 
 });
 
-var router = new Router();
-Backbone.history.start();
 
 App.newPostForm = function(e,form,router){
   if(e.preventDefault) e.preventDefault();
@@ -153,8 +161,67 @@ App.newPostParams = function(title, description, picture, location, user_id, rou
   });
 };
 
+App.editpost = function(post_id){
+  trace('Post ID came thru on the router: ' + post_id + "!")
+  $('#container').empty().load('partials/edit-post-form.html', function(response,status,xhr){
+    var $form = $('#edit-post-form');
+    $form.on('submit',function(event,post_id){
+      App.editPostForm(event,$form,router);
+    });
+  });
+},
 
+App.editPostForm = function(e,form,post_id){
+  trace('Post ID came thru on the editPostForm: ' + post_id + "!");
+  var locate = window.location.hash;
+  var point = locate.lastIndexOf('/');
+  var post_id = parseInt(locate.substring(point+1, locate.length));
+  debugger
+  if(e.preventDefault) e.preventDefault();
+  var title = $(form).find("input[name='post-title']").val();
+  var description = $(form).find("input[name='post-description']").val();
+  var picture = $(form).find("input[name='post-picture']").val();
+  var location = $(form).find("input[name='post-location']").val();
+  var user_id = 1;//localStorage.getItem('currentUser');
 
+  App.editPostParams(title, description, picture, location, user_id, post_id, router);
+};
+
+App.editPostParams = function(title, description, picture, location, user_id, post_id, router){
+  $.ajax({
+    url: App.url + '/posts/' + post_id,
+    type: 'PATCH',
+    data: {
+      post: {
+        title: title,
+        description: description,
+        picture: picture,
+        location: location,
+        user_id: user_id
+      },
+    },
+    complete: function(jqXHR,textStatus){
+      trace(jqXHR, textStatus, "complete post!!");
+    },
+    success: function(data, textStatus, jqXHR){
+      router.navigate("posts",{trigger: true});
+      trace(data,textStatus, jqXHR, "successful post!!");
+    },
+    error: function(jqXHR,error,exception){
+      trace(jqXHR,error,exception);
+    },
+  }).done(function(response){
+    trace(response, "posted project!!");
+  }).fail(function(jqXHR, textStatus, thrownError){
+    trace(jqXHR, textStatus, thrownError);
+    router.navigate("posts",{trigger: true});
+  }).always(function(response){
+    trace(response);
+  });
+};
+
+var router = new Router();
+Backbone.history.start();
 
 $(document).ready(function(){
 

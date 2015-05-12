@@ -3,12 +3,19 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.pageLinkSpace {
+  height: 20px;
+  width: 100%;
+  display: inline-block;
+}
+
 .pageLink {
   text-decoration: none;
   color: $link-color;
   background: #fff;
   border-radius: 6px;
-  margin: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
   padding: 10px;
   @include brand-shadow;
   // growth in mixin use over time...
@@ -16,6 +23,12 @@ body {
   // -moz-box-shadow: 10px 10px 5px #888;
   // -webkit-box-shadow: 10px 10px 5px #888;
   // box-shadow: 5px 5px 2.5px #888;
+}
+
+.pageLink:hover {
+  background: $light-yellow;
+  font-weight: bold;
+  z-index: 100;
 }
 
 .posts {

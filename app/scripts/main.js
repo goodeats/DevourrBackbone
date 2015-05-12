@@ -34,10 +34,7 @@ Router = Backbone.Router.extend({
   },
 
   about: function(){
-    $container.empty().load('partials/about.html',function(response,status,xhr){
-    // var template = Handlebars.compile($('#aboutTemplate').html());
-    // debugger
-    });
+    $container.empty().load('partials/about.html');
   },
 
   posts: function(){
@@ -99,7 +96,7 @@ Router = Backbone.Router.extend({
 
   newpost: function(){
     $('#container').empty().load('partials/post-form.html', function(response,status,xhr){
-      var $form = $('#project-form');
+      var $form = $('#new-post-form');
       $form.on('submit',function(event){
         App.newPostForm(event,$form,router);
       });
@@ -116,12 +113,13 @@ App.newPostForm = function(e,form,router){
   var title = $(form).find("input[name='post-title']").val();
   var description = $(form).find("input[name='post-description']").val();
   var picture = $(form).find("input[name='post-picture']").val();
-  var location = $(form).find("select[name='post-location']").val();
-  var user = 1;//localStorage.getItem('currentUser');
-  App.newPostParams(title, description, picture, location, user, router);
+  var location = $(form).find("input[name='post-location']").val();
+  var user_id = 1;//localStorage.getItem('currentUser');
+
+  App.newPostParams(title, description, picture, location, user_id, router);
 };
 
-App.newPostParams = function(title, description, picture, location, user, router){
+App.newPostParams = function(title, description, picture, location, user_id, router){
   $.ajax({
     url: App.url + '/posts',
     type: 'POST',
@@ -130,24 +128,26 @@ App.newPostParams = function(title, description, picture, location, user, router
         title: title,
         description: description,
         picture: picture,
-        location: location
+        location: location,
+        user_id: user_id
       },
     },
     complete: function(jqXHR,textStatus){
-      trace(jqXHR, textStatus, "complete project!!");
+      trace(jqXHR, textStatus, "complete post!!");
     },
     success: function(data, textStatus, jqXHR){
-      router.navigate("projects",{trigger: true});
+      debugger
+      router.navigate("posts/" + data.post.id,{trigger: true});
       trace(data,textStatus, jqXHR, "successful post!!");
     },
     error: function(jqXHR,error,exception){
       trace(jqXHR,error,exception);
     },
   }).done(function(response){
-    trace(response, "posted project!!");
+    trace(response, "posted post!!");
   }).fail(function(jqXHR, textStatus, thrownError){
     trace(jqXHR, textStatus, thrownError);
-    router.navigate("projects",{trigger: true});
+    router.navigate("posts",{trigger: true});
   }).always(function(response){
     trace(response);
   });

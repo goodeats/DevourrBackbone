@@ -1,0 +1,14 @@
+.form-title {
+  color: $dark-orange;
+}
+
+.post-form {
+  @include box-shadow(0, 10px, 10px, -10px, #000);
+  text-align: left;
+  display: table;
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}

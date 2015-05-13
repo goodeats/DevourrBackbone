@@ -10,7 +10,7 @@ var trace = function(){
 trace('Welcome to Devourr!');
 
 var App = App || {
-  url: 'https://devourapi.herokuapp.com/'
+  url: 'https://devourapi.herokuapp.com'
 },
 $header = $('#header'),
 $container = $('#container'),
@@ -52,7 +52,7 @@ Router = Backbone.Router.extend({
       }));
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
-      trace('fail!', jqXHR, textStatus, errorThrown);
+      trace('Backbone user: fail!', jqXHR, textStatus, errorThrown);
     }).always(function(response) {
       trace(response);
     });
@@ -69,7 +69,7 @@ Router = Backbone.Router.extend({
         posts: response.posts
       }));
     }).fail(function(jqXHR, textStatus, errorThrown) {
-      trace('fail!', jqXHR, textStatus, errorThrown);
+      trace('Backbone posts: fail!', jqXHR, textStatus, errorThrown);
     }).always(function(response) {
       trace(response);
     });
@@ -98,7 +98,7 @@ Router = Backbone.Router.extend({
 
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
-      trace('fail!', jqXHR, textStatus, errorThrown);
+      trace('Backbone post: fail!', jqXHR, textStatus, errorThrown);
     }).always(function(response) {
       trace(response);
     });
@@ -149,7 +149,7 @@ App.newPostParams = function(title, description, picture, location, user_id, rou
       trace(data,textStatus, jqXHR, "successful post!!");
     },
     error: function(jqXHR,error,exception){
-      trace(jqXHR,error,exception);
+      trace("Backbone newpost: fail",jqXHR,error,exception);
     },
   }).done(function(response){
     trace(response, "posted post!!");
@@ -208,7 +208,7 @@ App.editPostParams = function(title, description, picture, location, user_id, po
       trace(data,textStatus, jqXHR, "successful post!!");
     },
     error: function(jqXHR,error,exception){
-      trace(jqXHR,error,exception);
+      trace("Backbone editpost: fail",jqXHR,error,exception);
     },
   }).done(function(response){
     trace(response, "posted project!!");

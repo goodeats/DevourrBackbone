@@ -50,6 +50,7 @@
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/posts.js"></script>
+    <script src="scripts/user.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
@@ -73,7 +74,7 @@
     <script type='text/x-handlebars-template' id='postTemplate'>
       <div class='pageLinkSpace'>
         <a class='pageLink' href='#/posts'>Back to Posts</a>
-        <a class='pageLink' href='#/posts/{{post.id}}' id='edit-post'>Edit Posts</a>
+        <a class='pageLink' href='#/posts/{{post.id}}' id='edit-post'>Edit Post</a>
       </div>
 
       <div class='posts'>
@@ -93,6 +94,7 @@
     <script type='text/x-handlebars-template' id='userTemplate'>
       <div class='pageLinkSpace'>
         <a class='pageLink' href='#/posts'>Back to Posts</a>
+        <a class='pageLink' href='#/users/{{user.id}}' id='edit-user'>Edit Profile</a>
         <a class='pageLink' href='#/new-post' id='new-post'>New Post</a>
       </div>
 

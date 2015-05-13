@@ -1,0 +1,38 @@
+<div class="post-form">
+  <h1 class='form-title'>Edit Profile</h1>
+  <form id="edit-user-form">
+    <div>
+      <label for="user-name">Name</label>
+      <input type="text" name="user-name" id="user-name">
+    </div>
+    <div>
+      <label for="user-username">Username</label>
+      <input type="textarea" name="user-username" placeholder="{{user.username}}" id="user-username">
+    </div>
+    <div>
+      <label for="user-avatar">Picture (please insert image url for now)</label>
+      <input type="text" name="user-avatar" placeholder="avatar" id="user-avatar"></input>
+    </div>
+    <div>
+      <label for="user-bio">Bio</label>
+      <input type="text" name="user-bio" placeholder="bio" id="user-bio"></input>
+    </div>
+    <div>
+      <label for="user-website">Website</label>
+      <input type="text" name="user-website" placeholder="website" id="user-website"></input>
+    </div>
+    <div>
+      <label for="user-location">Location</label>
+      <input type="text" name="user-location" placeholder="location" id="user-location"></input>
+    </div>
+    <div>
+      <label for="user-privacy">Privacy</label>
+      <select name="user-privacy">
+        <option value="personal">Private</option>
+        <option value="friends">Friends Only</option>
+        <option selected value="global">Everyone</option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>

@@ -21,6 +21,7 @@ Router = Backbone.Router.extend({
     'about': 'about',
     // 'users': 'users', // http://localhost:9000/users
     'users/:id': 'user',  //http://localhost:9000/#/users/1
+    // 'edit-user': 'edituser',//http://localhost:9000/#/edit-user
     'posts': 'posts', //http://localhost:9000/#/posts
     'posts/:id': 'post',  //http://localhost:9000/#/posts/1
     'new-post': 'newpost',//http://localhost:9000/#/new-post
@@ -50,6 +51,16 @@ Router = Backbone.Router.extend({
       $container.html(template({
         user: response.user
       }));
+
+      $('#edit-user').on('click', function(){
+        var locate = window.location.hash;
+        var point = locate.lastIndexOf('/');
+        var user_id = parseInt(locate.substring(point+1, locate.length));
+        trace('Editing user ID: ' + user_id + "!");
+        var data = response.user;
+        App.edituser(user_id,data);
+      });
+
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       trace('Backbone user: fail!', jqXHR, textStatus, errorThrown);
@@ -59,23 +70,6 @@ Router = Backbone.Router.extend({
   },
 
   posts: App.getPosts,
-
-  // posts: function(){
-    // $container.empty();
-    // $.ajax({
-    //   url: App.url + '/posts',
-    //   type: 'GET'
-    // }).done(function(response) {
-    //   var template = Handlebars.compile($('#postsTemplate').html());
-    //   $container.html(template({
-    //     posts: response.posts
-    //   }));
-    // }).fail(function(jqXHR, textStatus, errorThrown) {
-    //   trace('Backbone posts: fail!', jqXHR, textStatus, errorThrown);
-    // }).always(function(response) {
-    //   trace(response);
-    // });
-  // },
 
   post: function (id){
     $container.empty();
@@ -146,7 +140,8 @@ App.newPostParams = function(title, description, picture, location, user_id, rou
       trace(jqXHR, textStatus, "complete post!!");
     },
     success: function(data, textStatus, jqXHR){
-      router.navigate("posts/" + data.post.id,{trigger: true});
+      window.location.reload();
+      // router.navigate("posts/" + data.post.id,{trigger: true});
       trace(data,textStatus, jqXHR, "successful post!!");
     },
     error: function(jqXHR,error,exception){

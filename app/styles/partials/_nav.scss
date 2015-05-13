@@ -1,3 +1,13 @@
+#header {
+  height: 50px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 20px;
+  position: fixed;
+  z-index: 100;
+}
+
 #navbar {
   width: 100%;
   height: 50px;
@@ -5,13 +15,14 @@
   text-align:right;
   line-height:50px;
   font-family: $header-font;
-  margin-bottom: 20px;
-  @include brand-shadow;
+
+  @include nav-brand-shadow;
 }
 
 .logoImage {
   float: left;
   height: 50px;
+  margin-left: 20px;
 }
 
 .logo {

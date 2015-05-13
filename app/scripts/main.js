@@ -10,7 +10,7 @@ var trace = function(){
 trace('Welcome to Devourr!');
 
 var App = App || {
-  url: 'http://localhost:3000/'
+  url: 'https://devourapi.herokuapp.com/'
 },
 $header = $('#header'),
 $container = $('#container'),

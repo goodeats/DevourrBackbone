@@ -107,7 +107,7 @@ Router = Backbone.Router.extend({
 
   newpost: function(){
     $('#container').empty().load('partials/new-post-form.html', function(response,status,xhr){
-      // $newform = $('#new-post-form');
+      var $newform = $('#new-post-form');
       $('#new-post-form').on('submit',function(event){
         App.newPostForm(event,$newform,router);
       });
@@ -116,9 +116,8 @@ Router = Backbone.Router.extend({
 
 });
 
-App.newPostForm = function(e,form,router){
+App.newPostForm = function(e,$newform,router){
   if(e.preventDefault) e.preventDefault();
-  $newform = $('#new-post-form');
   var title = $newform.find("input[name='post-title']").val();
   var description = $newform.find("input[name='post-description']").val();
   var picture = $newform.find("input[name='post-picture']").val();
@@ -155,7 +154,6 @@ App.newPostParams = function(title, description, picture, location, user_id, rou
     trace(response, "posted post!!");
   }).fail(function(jqXHR, textStatus, thrownError){
     trace(jqXHR, textStatus, thrownError);
-    // router.navigate("posts",{trigger: true});
   }).always(function(response){
     trace(response);
   });
@@ -177,13 +175,12 @@ App.editpost = function(post_id,data){
   });
 },
 
-App.editPostForm = function(e,form,post_id){
+App.editPostForm = function(e,$editform,post_id){
   trace('Post ID came thru on the editPostForm: ' + post_id + "!");
   var locate = window.location.hash;
   var point = locate.lastIndexOf('/');
   var post_id = parseInt(locate.substring(point+1, locate.length));
   if(e.preventDefault) e.preventDefault();
-  var $editform = $('#edit-post-form');
   var title = $editform.find("input[name='post-title']").val();
   var description = $editform.find("input[name='post-description']").val();
   var picture = $editform.find("input[name='post-picture']").val();

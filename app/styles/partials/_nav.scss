@@ -15,8 +15,10 @@
   text-align:right;
   line-height:50px;
   font-family: $header-font;
-
   @include nav-brand-shadow;
+  ul {
+    margin-right: 5px;
+  }
 }
 
 .logoImage {
@@ -33,7 +35,7 @@
 }
 
 .navListItem {
-  padding: 10px;
+  padding: 6px;
   display: inline;
   color: $nav-font-color;
   a {

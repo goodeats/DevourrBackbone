@@ -1,7 +1,12 @@
-.about img {
-  display: block;
+.about {
+  width: 50%;
   margin: 0 auto;
+  img {
+    display: block;
+    margin: 0 auto;
+  }
 }
+
 .aboutText {
   @include brand-shadow;
   // growth in mixin use over time...

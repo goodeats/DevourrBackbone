@@ -13,9 +13,17 @@
   }
 }
 
-.postUserProfile span {
-  position: absolute;
-  margin: 3px;
+.postUserProfile {
+  display: flex;
+  .postUserInfo {
+    display: flex;
+    flex-direction: column;
+    flex: center;
+  }
+  span {
+    margin-left: 5px;
+    margin-top: 5px;
+  }
 }
 
 .postProfileImage {

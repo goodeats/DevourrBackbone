@@ -58,22 +58,24 @@ Router = Backbone.Router.extend({
     });
   },
 
-  posts: function(){
-    $container.empty();
-    $.ajax({
-      url: App.url + '/posts',
-      type: 'GET'
-    }).done(function(response) {
-      var template = Handlebars.compile($('#postsTemplate').html());
-      $container.html(template({
-        posts: response.posts
-      }));
-    }).fail(function(jqXHR, textStatus, errorThrown) {
-      trace('Backbone posts: fail!', jqXHR, textStatus, errorThrown);
-    }).always(function(response) {
-      trace(response);
-    });
-  },
+  posts: App.getPosts,
+
+  // posts: function(){
+    // $container.empty();
+    // $.ajax({
+    //   url: App.url + '/posts',
+    //   type: 'GET'
+    // }).done(function(response) {
+    //   var template = Handlebars.compile($('#postsTemplate').html());
+    //   $container.html(template({
+    //     posts: response.posts
+    //   }));
+    // }).fail(function(jqXHR, textStatus, errorThrown) {
+    //   trace('Backbone posts: fail!', jqXHR, textStatus, errorThrown);
+    // }).always(function(response) {
+    //   trace(response);
+    // });
+  // },
 
   post: function (id){
     $container.empty();
@@ -230,7 +232,7 @@ $(document).ready(function(){
 
   var $nav = $('#navbar');
   $header.empty().load('partials/nav.html',function(response,status,xhr){
-    $nav.hide();
+    // $nav.hide();
   });
 
 

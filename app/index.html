@@ -87,6 +87,14 @@
           <div class='imageSpace'><a href='#/posts/{{post.id}}'><img class='postImage' src='{{post.picture}}'></a></div>
           <p>{{post.description}}</p>
           <p><i class="fa fa-map-marker"></i> {{post.location}}</p>
+          <div class="comments">
+            <h5>Discussion:</h5>
+            {{#each post.comments}}
+            <div class="commentsText">
+            <p>Comment: {{body}}</p>
+            </div>
+            {{/each}}
+          </div>
         </div>
       </div>
     </script>

@@ -1,11 +1,11 @@
-<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=http://i.imgur.com/0Qf1HsS.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/2ad797d2.main.css> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <body> <!--[if lt IE 10]>
+<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=http://i.imgur.com/0Qf1HsS.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/cf73f260.main.css> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <body> <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]--> <div id=header></div> <div id=container> <div class=centered> <img class=logo src=http://i.imgur.com/lJtLb4y.png> <div class=homeTagline> <h1>We are what we eat!</h1> <p>Check out some <a href=#/posts>posts</a> or see what this is all <a href=#/about>about</a>!</p> </div> </div> </div> <script src=scripts/f53edcc2.vendor.js></script> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --> <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/eaf7cfa4.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
+      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/67498ee9.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
       {{#each posts}}
         <div class='post'>
           <div class='postUserProfile'>
@@ -40,8 +40,8 @@
           <div class="comments">
             <h5>Discussion:</h5>
             {{#each post.comments}}
-            <div class="commentsText">
-            <p>{{body}} - <a href='#/users/{{user_id}}'>@{{user.username}}</a></p>
+            <div class="commentsText" id="comment-{{id}}">
+            <p>{{body}} - <a href='#/users/{{user_id}}'>@{{user.username}}</a> <span class='deleteComment'><a href='#/posts/{{../post.id}}'>delete</a></span></p>
             </div>
             {{/each}}
 

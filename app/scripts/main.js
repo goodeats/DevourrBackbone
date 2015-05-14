@@ -93,6 +93,10 @@ Router = Backbone.Router.extend({
         App.editpost(post_id,data);
       });
 
+      $('#new-comment').on('click', function(){
+        Comment.newComment();
+      });
+
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       trace('Backbone post: fail!', jqXHR, textStatus, errorThrown);

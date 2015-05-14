@@ -21,7 +21,6 @@ Router = Backbone.Router.extend({
     'about': 'about',
     // 'users': 'users', // http://localhost:9000/users
     'users/:id': 'user',  //http://localhost:9000/#/users/1
-    // 'edit-user': 'edituser',//http://localhost:9000/#/edit-user
     'posts': 'posts', //http://localhost:9000/#/posts
     'posts/:id': 'post',  //http://localhost:9000/#/posts/1
     'new-post': 'newpost',//http://localhost:9000/#/new-post
@@ -93,8 +92,8 @@ Router = Backbone.Router.extend({
         App.editpost(post_id,data);
       });
 
-      $('#new-comment').on('click', function(){
-        Comment.newComment();
+      $('#comment-submit').on('click', function(){
+        App.addComment();
       });
 
     })

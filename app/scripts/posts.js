@@ -17,6 +17,9 @@ App = (function(module){
       $container.html(template({
         posts: response.posts
       }));
+
+      $('.post').css('width','30%');
+
     }).fail(function(jqXHR, textStatus, errorThrown) {
       trace('Backbone posts: fail!', jqXHR, textStatus, errorThrown);
     }).always(function(response) {

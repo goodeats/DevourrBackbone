@@ -83,6 +83,9 @@ Router = Backbone.Router.extend({
         post: response.post
       }));
 
+      $('.posts').css('width','50%');
+      $('.posts').css('left','25%');
+
       $('#edit-post').on('click', function(){
         var locate = window.location.hash;
         var point = locate.lastIndexOf('/');

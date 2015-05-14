@@ -2,11 +2,11 @@
   background: $light-yellow;
   border-radius: 6px;
   margin: 20px;
-  display: flex;
-  flex-direction: row;
+  display: inline-flex;
+  // flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  // justify-content: center;
+  // align-items: flex-start;
   @include brand-shadow;
   a {
     text-decoration: none;

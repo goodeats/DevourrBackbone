@@ -100,8 +100,8 @@
           <div class="comments">
             <h5>Discussion:</h5>
             {{#each post.comments}}
-            <div class="commentsText">
-            <p>{{body}} - <a href='#/users/{{user_id}}'>@{{user.username}}</a></p>
+            <div class="commentsText" id="comment-{{id}}">
+            <p>{{body}} - <a href='#/users/{{user_id}}'>@{{user.username}}</a> <span class='deleteComment'><a href='#/posts/{{../post.id}}'>delete</a></span></p>
             </div>
             {{/each}}
 

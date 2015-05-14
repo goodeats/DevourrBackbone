@@ -2,7 +2,7 @@
   display: inline-flex;
   width: 100%;
   div {
-    width: 75%;
+    width: 65%;
     margin-right: 5%;
     input {
       width: 100%;
@@ -13,8 +13,15 @@
       padding: 3px;
     }
   }
-
   button {
-    width: 20%;
+    width: 30%;
+    background: $light-yellow;
+    // margin: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: $large-font-size;
   }
+}
+.deleteComment a {
+  color: $black-50;
 }

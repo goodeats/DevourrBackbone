@@ -96,6 +96,24 @@ Router = Backbone.Router.extend({
         App.addComment();
       });
 
+      var $deleteComment = $('.deleteComment');
+      $deleteComment.hide();
+      var $comment = $('.commentsText');
+      $comment.mouseenter(function(){
+        var $thisDelete = $deleteComment.eq($(this).index($comment));
+        $thisDelete.show();
+      }).mouseleave(function(){
+        var $thisDelete = $deleteComment.eq($(this).index($comment));
+        $thisDelete.hide();
+      });
+
+      $deleteComment.on('click', function(){
+        var locate = $comment.attr('id');
+        var point = locate.lastIndexOf('-');
+        var comment_id = parseInt(locate.substring(point+1, locate.length));
+        App.deleteComment(comment_id);
+      });
+
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       trace('Backbone post: fail!', jqXHR, textStatus, errorThrown);

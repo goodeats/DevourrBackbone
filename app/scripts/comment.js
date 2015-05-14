@@ -58,6 +58,27 @@ App = (function(module){
     });
   };
 
+  module.deleteComment = function(id){
+    var locate = window.location.hash;
+    var point = locate.lastIndexOf('/');
+    var post_id = parseInt(locate.substring(point+1, locate.length));
+    $.ajax({
+      url: App.url + '/posts/' + post_id + '/comments/' + id,
+      type: 'DELETE',
+    })
+    .done(function() {
+      console.log("success");
+      window.location.reload();
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
+  }
+
   return module;
 
 })(App || {});

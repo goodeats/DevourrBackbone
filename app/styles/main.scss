@@ -3,6 +3,7 @@
 @import "modules/variables";
 
 // partial styles
+@import "partials/home";
 @import "partials/body";
 @import "partials/nav";
 @import "partials/post";
@@ -14,11 +15,6 @@
 * {
   @include defaults;
   box-sizing: border-box;
-}
-
-.centered {
-  width: 100%;
-  text-align: center;
 }
 
 .browsehappy {

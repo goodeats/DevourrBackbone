@@ -20,8 +20,29 @@ App = (function(module){
 
       var $post = $('.post');
       var $like = $('.fa-heart-o');
+      var currentUser = 1;
 
       $post.css('width','30%');
+
+
+      for (var i = 0; i < response.posts.length; i++) {
+        if (response.posts[i].likes.length > 0) {
+
+          jQuery.each(response.posts[i].likes, function(i, val) {
+            trace('has been liked by user: ' + val.user_id);
+
+            if (val.user_id === currentUser) {
+              trace('find your heart');
+              $like.css('background','blue');
+            }
+
+          });
+
+        }
+      };
+
+
+
 
       $like.on('click', function(){
         var $thisLike = ($(this).attr('id'));;

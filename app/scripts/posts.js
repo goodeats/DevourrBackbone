@@ -18,7 +18,18 @@ App = (function(module){
         posts: response.posts
       }));
 
-      $('.post').css('width','30%');
+      var $post = $('.post');
+      var $like = $('.fa-heart-o');
+
+      $post.css('width','30%');
+
+
+      $like.on('click', function(){
+        var $thisLike = ($(this).attr('id'));;
+        var point = $thisLike.lastIndexOf('-');
+        var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
+        App.like(post_id);
+      });
 
     }).fail(function(jqXHR, textStatus, errorThrown) {
       trace('Backbone posts: fail!', jqXHR, textStatus, errorThrown);

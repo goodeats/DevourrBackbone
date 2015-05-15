@@ -63,7 +63,7 @@
     <script type='text/x-handlebars-template' id='postsTemplate'>
       <div class='posts'>
       {{#each posts}}
-        <div class='post'>
+        <div class='post' id='post-{{id}}'>
           <div class='postUserProfile'>
             <a href='#/users/{{user.id}}'><img class='postProfileImage' src='{{user.avatar}}'></a>
             <div class='postUserInfo'>
@@ -74,7 +74,7 @@
           <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
           <div class='imageSpace'><a href='#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
           <p>{{description}}</p>
-          <p><i class="fa fa-heart-o"></i> Likes: {{likes.length}}</p>
+          <p><i class="fa fa-heart-o" id='like-{{id}}'></i> Likes: {{likes.length}}</p>
         </div>
       {{/each}}
       </div>

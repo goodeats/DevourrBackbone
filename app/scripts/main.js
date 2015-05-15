@@ -9,16 +9,6 @@ var trace = function(){
 
 trace('Welcome to Devourr!');
 
-var $like = $('.fa-heart-o');
-
-$like.on('click', function(){
-  var $thisLike = ($(this).attr('id'));;
-  var point = $thisLike.lastIndexOf('-');
-  var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
-  trace(post_id);
-  // App.liked(post_id);
-});
-
 var App = App || {
   url: 'https://devourapi.herokuapp.com'
 },
@@ -68,6 +58,14 @@ Router = Backbone.Router.extend({
         trace('Editing user ID: ' + user_id + "!");
         var data = response.user;
         App.edituser(user_id,data);
+      });
+
+      var $like = $('.fa-heart-o');
+      $like.on('click', function(){
+        var $thisLike = ($(this).attr('id'));
+        var point = $thisLike.lastIndexOf('-');
+        var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
+        App.liked(post_id);
       });
 
     })
@@ -125,6 +123,14 @@ Router = Backbone.Router.extend({
         var point = locate.lastIndexOf('-');
         var comment_id = parseInt(locate.substring(point+1, locate.length));
         App.deleteComment(comment_id);
+      });
+
+      var $like = $('.fa-heart-o');
+      $like.on('click', function(){
+        var $thisLike = ($(this).attr('id'));
+        var point = $thisLike.lastIndexOf('-');
+        var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
+        App.liked(post_id);
       });
 
     })

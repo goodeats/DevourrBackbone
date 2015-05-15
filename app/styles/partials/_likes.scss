@@ -1,0 +1,12 @@
+.heart {
+  i {
+    font-weight: bold;
+    font-size: $large-font-size;
+  }
+}
+
+.heart:hover {
+  i {
+    color: red;
+  }
+}

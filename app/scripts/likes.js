@@ -18,8 +18,8 @@ App = (function(module){
 })(App || {});
 
 $(document).ready(function() {
-  var $like = $('.heart');
-  $like.on('click', function(){
-    trace('yo');
-  });
+  // var $like = $('.heart').find;
+  // $like.on('click', function(){
+  //   trace('yo');
+  // });
 });

@@ -74,7 +74,7 @@
           <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
           <div class='imageSpace'><a href='#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
           <p>{{description}}</p>
-          <p><span class='heart'><i class="fa fa-heart-o"></i></span> Likes: {{likes.length}}</p>
+          <p><i class="fa fa-heart-o"></i> Likes: {{likes.length}}</p>
         </div>
       {{/each}}
       </div>
@@ -98,7 +98,7 @@
           <h2><a href='#/posts/{{post.id}}'>{{post.title}}</a></h2>
           <div class='imageSpace'><a href='#/posts/{{post.id}}'><img class='postImage' src='{{post.picture}}'></a></div>
           <p>{{post.description}}</p>
-          <p><span class='heart'><i class="fa fa-heart-o"></i></span> Likes: {{post.likes.length}}</p>
+          <p><i class="fa fa-heart-o"></i> Likes: {{post.likes.length}}</p>
           <div class="comments">
             <h5>Discussion:</h5>
             {{#each post.comments}}
@@ -176,7 +176,7 @@
             <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
             <div class='imageSpace'><a href='#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
             <p>{{description}}</p>
-            <p><span class='heart'><i class="fa fa-heart-o"></i></span> Likes: {{likes.length}}</p>
+            <p><i class="fa fa-heart-o"></i> Likes: {{likes.length}}</p>
           </div>
           {{/each}}
         </div>

@@ -7,37 +7,37 @@ var App = App || {
 
 App = (function(module){
 
+
+
   module.liked = function(post_id){
     $.ajax({
       url: App.url + '/posts/' + post_id + '/likes',
       type: 'GET',
     })
     .done(function(response) {
-      trace('get likes');
-      trace(response);
-      trace('got the likes');
 
-      if (response.likes.length > 0){
-        trace('has likes');
-        trace(response.likes);
+      var currentUser = 1;
+
+      if (response.likes.length > 0) {
+        for (var i = 0; i < response.likes.length; i++) {
+          if (response.likes[i].user_id === currentUser){
+            App.unlike(post_id, response.likes[i].id);
+          }
+        };
       } else {
-        trace('has no likes');
-        trace(response.likes);
+        App.like(post_id);
       }
-
 
     })
     .fail(function() {
-      console.log("error");
+      console.log("ERROR!: could not determine if this has been liked yet");
     })
     .always(function() {
-      console.log("complete");
     });
 
   };
 
   module.like = function(post_id){
-    trace('yo ' + post_id);
     var user_id = 1;
     $.ajax({
       url: App.url + '/posts/' + post_id + '/likes',
@@ -51,20 +51,35 @@ App = (function(module){
       },
     })
     .done(function(response) {
-      console.log("success" + response);
+      console.log("successful like");
     })
     .fail(function(response) {
-      console.log("error" + response);
-    })
-    .always(function(response) {
-      console.log("complete" + response);
+      console.log("like error" + response);
     });
   };
 
-  module.unlike = function(){
-    trace('yo');
+  module.unlike = function(post_id, like_id){
+    $.ajax({
+      url: App.url + '/posts/' + post_id + '/likes/' + like_id,
+      type: 'DELETE',
+    })
+    .done(function(response) {
+      console.log("successful unlike");
+    })
+    .fail(function() {
+      console.log("unlike error" + response);
+    })
+    .always(function() {
+    });
+
   };
 
   return module;
 
 })(App || {});
+
+
+
+$(document).ready(function(){
+
+});

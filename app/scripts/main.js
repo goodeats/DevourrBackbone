@@ -9,6 +9,16 @@ var trace = function(){
 
 trace('Welcome to Devourr!');
 
+var $like = $('.fa-heart-o');
+
+$like.on('click', function(){
+  var $thisLike = ($(this).attr('id'));;
+  var point = $thisLike.lastIndexOf('-');
+  var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
+  trace(post_id);
+  // App.liked(post_id);
+});
+
 var App = App || {
   url: 'https://devourapi.herokuapp.com'
 },
@@ -253,6 +263,5 @@ $(document).ready(function(){
   $header.empty().load('partials/nav.html',function(response,status,xhr){
     // $nav.hide();
   });
-
 
 });

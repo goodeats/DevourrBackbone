@@ -23,12 +23,11 @@ App = (function(module){
 
       $post.css('width','30%');
 
-
       $like.on('click', function(){
         var $thisLike = ($(this).attr('id'));;
         var point = $thisLike.lastIndexOf('-');
         var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
-        App.like(post_id);
+        App.liked(post_id);
       });
 
     }).fail(function(jqXHR, textStatus, errorThrown) {

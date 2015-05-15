@@ -1,13 +1,13 @@
-<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=http://i.imgur.com/0Qf1HsS.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/e2bd6ddb.main.css> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <body> <!--[if lt IE 10]>
+<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=http://i.imgur.com/0Qf1HsS.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/3553d058.main.css>  <body> <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]--> <div id=header></div> <div id=container> <div class=centered> <img class=logo src=http://i.imgur.com/lJtLb4y.png> <div class=homeTagline> <h1>We are what we eat!</h1> <p>Check out some <a href=#/posts>posts</a> or see what this is all <a href=#/about>about</a>!</p> </div> </div> </div> <script src=scripts/f53edcc2.vendor.js></script> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --> <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/6e1ad345.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
+      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/a72bcd58.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
       {{#each posts}}
-        <div class='post'>
+        <div class='post' id='post-{{id}}'>
           <div class='postUserProfile'>
             <a href='#/users/{{user.id}}'><img class='postProfileImage' src='{{user.avatar}}'></a>
             <div class='postUserInfo'>
@@ -18,7 +18,7 @@
           <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
           <div class='imageSpace'><a href='#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
           <p>{{description}}</p>
-          <p><span class='heart'><i class="fa fa-heart-o"></i></span> Likes: {{likes.length}}</p>
+          <p><i class="fa fa-heart-o" id='like-{{id}}'></i> Likes: {{likes.length}}</p>
         </div>
       {{/each}}
       </div></script> <script type=text/x-handlebars-template id=postTemplate><div class='pageLinkSpace'>
@@ -38,7 +38,7 @@
           <h2><a href='#/posts/{{post.id}}'>{{post.title}}</a></h2>
           <div class='imageSpace'><a href='#/posts/{{post.id}}'><img class='postImage' src='{{post.picture}}'></a></div>
           <p>{{post.description}}</p>
-          <p><span class='heart'><i class="fa fa-heart-o"></i></span> Likes: {{post.likes.length}}</p>
+          <p><i class="fa fa-heart-o"></i> Likes: {{post.likes.length}}</p>
           <div class="comments">
             <h5>Discussion:</h5>
             {{#each post.comments}}
@@ -112,8 +112,8 @@
             <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
             <div class='imageSpace'><a href='#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
             <p>{{description}}</p>
-            <p><span class='heart'><i class="fa fa-heart-o"></i></span> Likes: {{likes.length}}</p>
+            <p><i class="fa fa-heart-o"></i> Likes: {{likes.length}}</p>
           </div>
           {{/each}}
         </div>
-      </div></script>
+      </div></script>  

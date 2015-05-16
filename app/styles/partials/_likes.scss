@@ -19,3 +19,13 @@
 .fa-heart-o:hover {
   color: red;
 }
+
+.fa-heart {
+  font-weight: bold;
+  font-size: $large-font-size;
+  color: red;
+}
+
+.fa-heart:hover {
+  color: $pink;
+}

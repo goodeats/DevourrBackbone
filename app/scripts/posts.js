@@ -24,17 +24,12 @@ App = (function(module){
 
       $post.css('width','30%');
 
+      //load full red hearts for my liked posts
       for (var i = 0; i < response.posts.length; i++) {
         if (response.posts[i].likes.length > 0) {
-
           jQuery.each(response.posts[i].likes, function(i, val) {
-            trace('has been liked by user: ' + val.user_id);
-
             if (val.user_id === currentUser) {
-
               var $myLikes = $('#like-' + val.post_id);
-              trace($myLikes);
-              $myLikes.css('background','blue');
               $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
             }
           });

@@ -7,10 +7,6 @@ var App = App || {
 
 App = (function(module){
 
-  // module.loadMyLikes = function(post_id){
-  //   trace(post_id);
-  // };
-
   module.liked = function(post_id){
     $.ajax({
       url: App.url + '/posts/' + post_id + '/likes',

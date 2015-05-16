@@ -37,7 +37,12 @@ App = (function(module){
       };
 
 
-
+      $('.fa-heart').on('click', function(){
+        var $thisUnlike = ($(this).attr('id'));;
+        var point = $thisUnlike.lastIndexOf('-');
+        var post_id = parseInt($thisUnlike.substring(point+1, $thisUnlike.length));
+        App.liked(post_id);
+      });
 
       $like.on('click', function(){
         var $thisLike = ($(this).attr('id'));;

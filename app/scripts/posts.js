@@ -41,7 +41,9 @@ App = (function(module){
         var $thisUnlike = ($(this).attr('id'));;
         var point = $thisUnlike.lastIndexOf('-');
         var post_id = parseInt($thisUnlike.substring(point+1, $thisUnlike.length));
+        trace($(this));
         App.liked(post_id);
+        $(this).replaceWith('<i class="fa fa-heart-o" id="like-' + post_id + '"></i>');
       });
 
       $like.on('click', function(){
@@ -49,6 +51,7 @@ App = (function(module){
         var point = $thisLike.lastIndexOf('-');
         var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
         App.liked(post_id);
+        $(this).replaceWith('<i class="fa fa-heart" id="like-' + post_id + '"></i>');
       });
 
     }).fail(function(jqXHR, textStatus, errorThrown) {

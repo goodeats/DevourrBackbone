@@ -24,7 +24,6 @@ App = (function(module){
 
       $post.css('width','30%');
 
-
       for (var i = 0; i < response.posts.length; i++) {
         if (response.posts[i].likes.length > 0) {
 
@@ -32,12 +31,13 @@ App = (function(module){
             trace('has been liked by user: ' + val.user_id);
 
             if (val.user_id === currentUser) {
-              trace('find your heart');
-              $like.css('background','blue');
+
+              var $myLikes = $('#like-' + val.post_id);
+              trace($myLikes);
+              $myLikes.css('background','blue');
+              $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
             }
-
           });
-
         }
       };
 

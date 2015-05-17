@@ -44,3 +44,13 @@
   max-height: 250px;
   max-width: 100%;
 }
+
+.postStats {
+  width: 100%;
+  display: inline-flex;
+  text-align: center;
+  padding: 3px;
+  .postStat {
+    flex-grow: 1;
+  }
+}

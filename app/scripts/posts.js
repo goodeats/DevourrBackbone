@@ -41,9 +41,11 @@ App = (function(module){
         var $thisUnlike = ($(this).attr('id'));;
         var point = $thisUnlike.lastIndexOf('-');
         var post_id = parseInt($thisUnlike.substring(point+1, $thisUnlike.length));
-        trace($(this));
+        // trace($(this));
         App.liked(post_id);
-        $(this).replaceWith('<i class="fa fa-heart-o" id="like-' + post_id + '"></i>');
+        $(this).toggleClass('fa-heart fa-heart-o');
+        // $(this).removeClass('fa-heart').addClass('fa-heart-o');
+        // trace($(this));
       });
 
       $like.on('click', function(){
@@ -51,7 +53,10 @@ App = (function(module){
         var point = $thisLike.lastIndexOf('-');
         var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
         App.liked(post_id);
-        $(this).replaceWith('<i class="fa fa-heart" id="like-' + post_id + '"></i>');
+        // trace($(this));
+        $(this).toggleClass('fa-heart-o fa-heart');
+        // $(this).removeClass('fa-heart-o').addClass('fa-heart');
+        // trace($(this));
       });
 
     }).fail(function(jqXHR, textStatus, errorThrown) {

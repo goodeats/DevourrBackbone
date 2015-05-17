@@ -60,12 +60,35 @@ Router = Backbone.Router.extend({
         App.edituser(user_id,data);
       });
 
+      var currentUser = 1;
+
+      //load full red hearts for my liked posts
+      for (var i = 0; i < response.user.posts.length; i++) {
+        if (response.user.posts[i].likes.length > 0) {
+          jQuery.each(response.user.posts[i].likes, function(i, val) {
+            if (val.user_id === currentUser) {
+              var $myLikes = $('#like-' + val.post_id);
+              $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
+            }
+          });
+        }
+      };
+
       var $like = $('.fa-heart-o');
       $like.on('click', function(){
         var $thisLike = ($(this).attr('id'));
         var point = $thisLike.lastIndexOf('-');
         var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
         App.liked(post_id);
+        $(this).toggleClass('fa-heart-o fa-heart');
+      });
+
+      $('.fa-heart').on('click', function(){
+        var $thisUnlike = ($(this).attr('id'));;
+        var point = $thisUnlike.lastIndexOf('-');
+        var post_id = parseInt($thisUnlike.substring(point+1, $thisUnlike.length));
+        App.liked(post_id);
+        $(this).toggleClass('fa-heart fa-heart-o');
       });
 
     })

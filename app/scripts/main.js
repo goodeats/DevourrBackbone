@@ -93,6 +93,7 @@ Router = Backbone.Router.extend({
 
       $('.posts').css('width','50%');
       $('.posts').css('left','25%');
+      var currentUser = 1;
 
       $('#edit-post').on('click', function(){
         var locate = window.location.hash;
@@ -125,12 +126,31 @@ Router = Backbone.Router.extend({
         App.deleteComment(comment_id);
       });
 
+      //load full red hearts for my liked posts
+      if (response.post.likes.length > 0) {
+        jQuery.each(response.post.likes, function(i, val) {
+          if (val.user_id === currentUser) {
+            var $myLikes = $('#like-' + val.post_id);
+            $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
+          }
+        });
+      }
+
       var $like = $('.fa-heart-o');
       $like.on('click', function(){
         var $thisLike = ($(this).attr('id'));
         var point = $thisLike.lastIndexOf('-');
         var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
         App.liked(post_id);
+        $(this).toggleClass('fa-heart-o fa-heart');
+      });
+
+      $('.fa-heart').on('click', function(){
+        var $thisUnlike = ($(this).attr('id'));;
+        var point = $thisUnlike.lastIndexOf('-');
+        var post_id = parseInt($thisUnlike.substring(point+1, $thisUnlike.length));
+        App.liked(post_id);
+        $(this).toggleClass('fa-heart fa-heart-o');
       });
 
     })

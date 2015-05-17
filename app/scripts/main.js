@@ -223,8 +223,7 @@ App.newPostParams = function(title, description, picture, location, user_id, rou
       trace(jqXHR, textStatus, "complete post!!");
     },
     success: function(data, textStatus, jqXHR){
-      window.location.reload();
-      // router.navigate("posts/" + data.post.id,{trigger: true});
+      router.navigate("posts/" + data.post.id,{trigger: true});
       trace(data,textStatus, jqXHR, "successful post!!");
     },
     error: function(jqXHR,error,exception){

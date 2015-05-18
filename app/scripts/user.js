@@ -21,6 +21,17 @@ App = (function(module){
     return parseInt(thisLike.parent().children('.hiddenLikeCounter').html());
   };
 
+  module.hiddenToggleStatus = function(thisToggle, thisLike){
+    if (thisToggle === 0){
+      var status = thisToggle++;
+      thisLike.parent().children('.hiddenLikeCounter').text(thisToggle);
+    } else if (thisToggle === 1) {
+      var status = thisToggle--;
+      thisLike.parent().children('.hiddenLikeCounter').text(thisToggle);
+    }
+    return status;
+  };
+
   module.getUser = function(id){
     $container.empty();
     $.ajax({
@@ -51,33 +62,26 @@ App = (function(module){
         App.checkIfLiked(post_id);
         $(this).toggleClass('fa-heart-o fa-heart');
 
-        var userPostLikeCountToInt = module.findPostLikes($(this));
+        var currentUserLikeCount = module.findPostLikes($(this));
         var hiddenLikeToggle = module.findHiddenLikeToggle($(this));
-        var userLikedCountToInt = parseInt($('#statLiked').html());
-
-        if (hiddenLikeToggle === 0){
-          hiddenLikeToggle++;
-          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeToggle);
-        } else if (hiddenLikeToggle === 1) {
-          hiddenLikeToggle--;
-          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeToggle);
-        }
+        var toggleStatus = module.hiddenToggleStatus(module.findHiddenLikeToggle($(this)), $(this));
 
         var likeCounter = function(){
-          if (hiddenLikeToggle === 0){
-            var newCount = userPostLikeCountToInt - 1;
+          if (toggleStatus === 0){
+            var newCount = currentUserLikeCount + 1;
           } else {
-            var newCount = userPostLikeCountToInt + 1;
+            var newCount = currentUserLikeCount - 1;
           }
           return newCount;
         }
         $(this).parent().children('.statLikes').text(likeCounter());
 
+        var userTotalLikeCount = parseInt($('#statLiked').html());
         var userLikeCounter = function(){
-          if (hiddenLikeToggle === 0){
-            var newCount = userLikedCountToInt - 1;
+          if (toggleStatus === 0){
+            var newCount = userTotalLikeCount + 1;
           } else {
-            var newCount = userLikedCountToInt + 1;
+            var newCount = userTotalLikeCount - 1;
           }
           return newCount;
         }
@@ -94,33 +98,26 @@ App = (function(module){
         // the remaining code updates the page without the need to refresh
         $(this).toggleClass('fa-heart-o fa-heart');
 
-        var userPostLikeCountToInt = module.findPostLikes($(this));
+        var currentUserLikeCount = module.findPostLikes($(this));
         var hiddenLikeToggle = module.findHiddenLikeToggle($(this));
-        var userLikedCountToInt = parseInt($('#statLiked').html());
-
-        if (hiddenLikeToggle === 0){
-          hiddenLikeToggle++;
-          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeToggle);
-        } else if (hiddenLikeToggle === 1) {
-          hiddenLikeToggle--;
-          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeToggle);
-        }
+        var toggleStatus = module.hiddenToggleStatus(module.findHiddenLikeToggle($(this)), $(this));
 
         var likeCounter = function(){
-          if (hiddenLikeToggle === 0){
-            var newCount = userPostLikeCountToInt + 1;
+          if (toggleStatus === 0){
+            var newCount = currentUserLikeCount - 1;
           } else {
-            var newCount = userPostLikeCountToInt - 1;
+            var newCount = currentUserLikeCount + 1;
           }
           return newCount;
         }
         $(this).parent().children('.statLikes').text(likeCounter());
 
+        var userTotalLikeCount = parseInt($('#statLiked').html());
         var userLikeCounter = function(){
-          if (hiddenLikeToggle === 1){
-            var newCount = userLikedCountToInt - 1;
+          if (toggleStatus === 1){
+            var newCount = userTotalLikeCount + 1;
           } else {
-            var newCount = userLikedCountToInt + 1;
+            var newCount = userTotalLikeCount - 1;
           }
           return newCount;
         }

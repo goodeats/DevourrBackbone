@@ -36,13 +36,37 @@ App = (function(module){
         }
       };
 
-
+      var counter = 0;
       $('.fa-heart').on('click', function(){
         var $thisUnlike = ($(this).attr('id'));;
         var point = $thisUnlike.lastIndexOf('-');
         var post_id = parseInt($thisUnlike.substring(point+1, $thisUnlike.length));
         App.liked(post_id);
+
+        var likeCount = $(this).parent().children('.statLikes').html();
+        var likeCountToInt = (parseInt(likeCount));
+
+
+        var likeCounter = function(){
+          if (counter === 0){
+            trace('heres what the counter starts as: ' + counter);
+            var newCount = likeCountToInt - 1;
+            counter++;
+            trace('counter changed to ' + counter);
+          } else {
+            trace('heres what the counter starts as: ' + counter);
+            var newCount = likeCountToInt + 1;
+            counter--;
+            trace('counter changed to ' + counter);
+          }
+          trace("new counter is " + counter);
+          return newCount;
+        }
+
+        var toggleLikeCount = $(this).parent().children('.statLikes').text(likeCounter());
+
         $(this).toggleClass('fa-heart fa-heart-o');
+
       });
 
       $like.on('click', function(){
@@ -50,7 +74,31 @@ App = (function(module){
         var point = $thisLike.lastIndexOf('-');
         var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
         App.liked(post_id);
+
+        var likeCount = $(this).parent().children('.statLikes').html();
+        var likeCountToInt = (parseInt(likeCount));
+
+
+        var likeCounter = function(){
+          if (counter === 0){
+            trace('heres what the counter starts as: ' + counter);
+            var newCount = likeCountToInt + 1;
+            counter++;
+            trace('counter changed to ' + counter);
+          } else {
+            trace('heres what the counter starts as: ' + counter);
+            var newCount = likeCountToInt - 1;
+            counter--;
+            trace('counter changed to ' + counter);
+          }
+          trace("new counter is " + counter);
+          return newCount;
+        }
+
+        var toggleLikeCount = $(this).parent().children('.statLikes').text(likeCounter());
+
         $(this).toggleClass('fa-heart-o fa-heart');
+
       });
 
     }).fail(function(jqXHR, textStatus, errorThrown) {

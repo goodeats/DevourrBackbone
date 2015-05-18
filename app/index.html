@@ -75,7 +75,7 @@
           <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
           <div class='imageSpace'><a href='#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
           <p>{{description}}</p>
-          <div class='postStats'><div class='postStat'><i class="fa fa-heart-o" id='like-{{id}}'></i> Likes: {{likes.length}}</div></div>
+          <div class='postStats'><div class='postStat'><i class="fa fa-heart-o" id='like-{{id}}'></i> <span class='statLikes'>{{likes.length}}</span></div></div>
         </div>
       {{/each}}
       </div>

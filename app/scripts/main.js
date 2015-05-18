@@ -129,42 +129,13 @@ Router = Backbone.Router.extend({
         var post_id = parseInt(locate.substring(point+1, locate.length));
         trace('Deleting post ID: ' + post_id + "!");
         var data = response.post;
-        trace(data);
 
-
-
-        // jQuery.alerts.okButton = 'Yes';
-        // jQuery.alerts.cancelButton = 'No';
-        // confirm('Are you sure??',  '', function(r){
-        //   if (r === true) {
-        //     App.deletePost(post_id,data);
-        //   }
-        // });
-
-      var confirmed = false;
-      function confirmDialog(obj){
-        if(!confirmed){
-          $( "#dialog-confirm" ).dialog({
-            resizable: false,
-            height:140,
-            modal: true,
-            buttons: {
-              "Yes": function()
-              {
-                $( this ).dialog( "close" );
-                confirmed = true; obj.click();
-              },
-              "No": function()
-              {
-                $( this ).dialog( "close" );
-              }
-            }
-          });
+        var confirm = window.confirm("Do you want to delete this post?");
+        if(confirm == true){
+          App.deletePost(post_id,data);
+        } else {
+         trace("bye");
         }
-
-        return confirmed;
-      }
-
 
       });
 

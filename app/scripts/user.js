@@ -13,12 +13,12 @@ App = (function(module){
     return parseInt($thisLike.substring(point+1, $thisLike.length));
   };
 
-  module.findPostLikes = function(likes){
-    return parseInt(likes.parent().children('.statLikes').html());
+  module.findPostLikes = function(thisLike){
+    return parseInt(thisLike.parent().children('.statLikes').html());
   };
 
-  module.findHiddenLikeToggle = function(brah){
-
+  module.findHiddenLikeToggle = function(thisLike){
+    return parseInt(thisLike.parent().children('.hiddenLikeCounter').html());
   };
 
   module.getUser = function(id){
@@ -52,7 +52,7 @@ App = (function(module){
         $(this).toggleClass('fa-heart-o fa-heart');
 
         var userPostLikeCountToInt = module.findPostLikes($(this));
-        var hiddenLikeToggle = parseInt($(this).parent().children('.hiddenLikeCounter').html());
+        var hiddenLikeToggle = module.findHiddenLikeToggle($(this));
         var userLikedCountToInt = parseInt($('#statLiked').html());
 
         if (hiddenLikeToggle === 0){
@@ -95,7 +95,7 @@ App = (function(module){
         $(this).toggleClass('fa-heart-o fa-heart');
 
         var userPostLikeCountToInt = module.findPostLikes($(this));
-        var hiddenLikeToggle = parseInt($(this).parent().children('.hiddenLikeCounter').html());
+        var hiddenLikeToggle = module.findHiddenLikeToggle($(this));
         var userLikedCountToInt = parseInt($('#statLiked').html());
 
         if (hiddenLikeToggle === 0){

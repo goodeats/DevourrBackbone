@@ -16,7 +16,7 @@ App = (function(module){
       type: 'DELETE',
     })
     .done(function() {
-      router.navigate("posts/",{trigger: true});
+      router.navigate("posts",{trigger: true});
     })
     .fail(function() {
       console.log("error: could not delete post");

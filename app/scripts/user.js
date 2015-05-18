@@ -7,6 +7,20 @@ var App = App || {
 
 App = (function(module){
 
+  module.findPostId = function(thisPost){
+    var $thisLike = thisPost.attr('id');
+    var point = $thisLike.lastIndexOf('-');
+    return parseInt($thisLike.substring(point+1, $thisLike.length));
+  };
+
+  module.findPostLikes = function(likes){
+    return parseInt(likes.parent().children('.statLikes').html());
+  };
+
+  module.findHiddenLikeToggle = function(brah){
+
+  };
+
   module.getUser = function(id){
     $container.empty();
     $.ajax({
@@ -29,51 +43,38 @@ App = (function(module){
 
       var currentUser = 1;
 
-      //load full red hearts for my liked posts
-      for (var i = 0; i < response.user.posts.length; i++) {
-        if (response.user.posts[i].likes.length > 0) {
-          jQuery.each(response.user.posts[i].likes, function(i, val) {
-            if (val.user_id === currentUser) {
-              var $myLikes = $('#like-' + val.post_id);
-              $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
-            }
-          });
-        }
-      };
+      App.loadUserLikes(response);
 
       var $like = $('.fa-heart-o');
       $like.on('click', function(){
-        var $thisLike = ($(this).attr('id'));
-        var point = $thisLike.lastIndexOf('-');
-        var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
-        App.liked(post_id);
+        var post_id = module.findPostId($(this));
+        App.checkIfLiked(post_id);
+        $(this).toggleClass('fa-heart-o fa-heart');
 
-        var likeCount = $(this).parent().children('.statLikes').html();
-        var likeCountToInt = (parseInt(likeCount));
-        var hiddenLikeCount = $(this).parent().children('.hiddenLikeCounter').html();
-        var hiddenLikeCountToInt = parseInt(hiddenLikeCount);
-        var userLikedCount = $('#statLiked').html();
-        var userLikedCountToInt = parseInt(userLikedCount);
+        var userPostLikeCountToInt = module.findPostLikes($(this));
+        var hiddenLikeToggle = parseInt($(this).parent().children('.hiddenLikeCounter').html());
+        var userLikedCountToInt = parseInt($('#statLiked').html());
 
-        if (hiddenLikeCountToInt === 0){
-          hiddenLikeCountToInt++;
-          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
-        } else if (hiddenLikeCountToInt === 1) {
-          hiddenLikeCountToInt--;
-          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        if (hiddenLikeToggle === 0){
+          hiddenLikeToggle++;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeToggle);
+        } else if (hiddenLikeToggle === 1) {
+          hiddenLikeToggle--;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeToggle);
         }
 
         var likeCounter = function(){
-          if (hiddenLikeCountToInt === 0){
-            var newCount = likeCountToInt - 1;
+          if (hiddenLikeToggle === 0){
+            var newCount = userPostLikeCountToInt - 1;
           } else {
-            var newCount = likeCountToInt + 1;
+            var newCount = userPostLikeCountToInt + 1;
           }
           return newCount;
         }
+        $(this).parent().children('.statLikes').text(likeCounter());
 
         var userLikeCounter = function(){
-          if (hiddenLikeCountToInt === 0){
+          if (hiddenLikeToggle === 0){
             var newCount = userLikedCountToInt - 1;
           } else {
             var newCount = userLikedCountToInt + 1;
@@ -82,45 +83,41 @@ App = (function(module){
         }
         $('#statLiked').text(userLikeCounter());
 
-        var toggleLikeCount = $(this).parent().children('.statLikes').text(likeCounter());
 
-        $(this).toggleClass('fa-heart-o fa-heart');
       });
 
-      $('.fa-heart').on('click', function(){
-        var $thisUnlike = ($(this).attr('id'));;
-        var point = $thisUnlike.lastIndexOf('-');
-        var post_id = parseInt($thisUnlike.substring(point+1, $thisUnlike.length));
-        App.liked(post_id);
+      var $unlike = $('.fa-heart');
+      $unlike.on('click', function(){
+        var post_id = module.findPostId($(this));
+        App.checkIfLiked(post_id);
 
-        var likeCount = $(this).parent().children('.statLikes').html();
-        var likeCountToInt = (parseInt(likeCount));
-        var hiddenLikeCount = $(this).parent().children('.hiddenLikeCounter').html();
-        var hiddenLikeCountToInt = parseInt(hiddenLikeCount);
-        var userLikedCount = $('#statLiked').html();
-        var userLikedCountToInt = parseInt(userLikedCount);
+        // the remaining code updates the page without the need to refresh
+        $(this).toggleClass('fa-heart-o fa-heart');
 
+        var userPostLikeCountToInt = module.findPostLikes($(this));
+        var hiddenLikeToggle = parseInt($(this).parent().children('.hiddenLikeCounter').html());
+        var userLikedCountToInt = parseInt($('#statLiked').html());
 
-        //toggle hidden like count
-        if (hiddenLikeCountToInt === 0){
-          hiddenLikeCountToInt++;
-          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
-        } else if (hiddenLikeCountToInt === 1) {
-          hiddenLikeCountToInt--;
-          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        if (hiddenLikeToggle === 0){
+          hiddenLikeToggle++;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeToggle);
+        } else if (hiddenLikeToggle === 1) {
+          hiddenLikeToggle--;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeToggle);
         }
 
         var likeCounter = function(){
-          if (hiddenLikeCountToInt === 0){
-            var newCount = likeCountToInt + 1;
+          if (hiddenLikeToggle === 0){
+            var newCount = userPostLikeCountToInt + 1;
           } else {
-            var newCount = likeCountToInt - 1;
+            var newCount = userPostLikeCountToInt - 1;
           }
           return newCount;
         }
+        $(this).parent().children('.statLikes').text(likeCounter());
 
         var userLikeCounter = function(){
-          if (hiddenLikeCountToInt === 1){
+          if (hiddenLikeToggle === 1){
             var newCount = userLikedCountToInt - 1;
           } else {
             var newCount = userLikedCountToInt + 1;
@@ -129,9 +126,6 @@ App = (function(module){
         }
         $('#statLiked').text(userLikeCounter());
 
-        var toggleLikeCount = $(this).parent().children('.statLikes').text(likeCounter());
-
-        $(this).toggleClass('fa-heart fa-heart-o');
       });
 
     })

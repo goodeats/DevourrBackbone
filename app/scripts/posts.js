@@ -24,17 +24,7 @@ App = (function(module){
 
       $post.css('width','30%');
 
-      //load full red hearts for my liked posts
-      for (var i = 0; i < response.posts.length; i++) {
-        if (response.posts[i].likes.length > 0) {
-          jQuery.each(response.posts[i].likes, function(i, val) {
-            if (val.user_id === currentUser) {
-              var $myLikes = $('#like-' + val.post_id);
-              $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
-            }
-          });
-        }
-      };
+      App.loadPostsLikes(response);
 
       $('.fa-heart').on('click', function(){
         var $thisUnlike = ($(this).attr('id'));;

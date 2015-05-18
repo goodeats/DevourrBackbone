@@ -7,7 +7,48 @@ var App = App || {
 
 App = (function(module){
 
-  module.liked = function(post_id){
+  var currentUser = 1;
+
+  module.loadPostsLikes = function(response){
+    for (var i = 0; i < response.posts.length; i++) {
+      if (response.posts[i].likes.length > 0) {
+        jQuery.each(response.posts[i].likes, function(i, val) {
+          if (val.user_id === currentUser) {
+            var $myLikes = $('#like-' + val.post_id);
+            $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
+          }
+        });
+      }
+    };
+  };
+
+  module.loadPostLike = function(response){
+    //load full red hearts for my liked posts
+    if (response.post.likes.length > 0) {
+      jQuery.each(response.post.likes, function(i, val) {
+        if (val.user_id === currentUser) {
+          var $myLikes = $('#like-' + val.post_id);
+          $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
+        }
+      });
+    }
+  };
+
+  module.loadUserLikes = function(response){
+    //load full red hearts for my liked posts
+    for (var i = 0; i < response.user.posts.length; i++) {
+      if (response.user.posts[i].likes.length > 0) {
+        jQuery.each(response.user.posts[i].likes, function(i, val) {
+          if (val.user_id === currentUser) {
+            var $myLikes = $('#like-' + val.post_id);
+            $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
+          }
+        });
+      }
+    };
+  };
+
+  module.checkIfLiked = function(post_id){
     $.ajax({
       url: App.url + '/posts/' + post_id + '/likes',
       type: 'GET',

@@ -67,15 +67,7 @@ App = (function(module){
         App.deleteComment(comment_id);
       });
 
-      //load full red hearts for my liked posts
-      if (response.post.likes.length > 0) {
-        jQuery.each(response.post.likes, function(i, val) {
-          if (val.user_id === currentUser) {
-            var $myLikes = $('#like-' + val.post_id);
-            $myLikes.replaceWith('<i class="fa fa-heart" id="like-' + val.post_id + '"></i>');
-          }
-        });
-      }
+      App.loadPostLike(response);
 
       var $like = $('.fa-heart-o');
       $like.on('click', function(){

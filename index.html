@@ -5,7 +5,7 @@
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/40d07572.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
+      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/278e6802.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
       {{#each posts}}
         <div class='post' id='post-{{id}}'>
           <div class='postUserProfile'>
@@ -39,7 +39,7 @@
           <h2><a href='#/posts/{{post.id}}'>{{post.title}}</a></h2>
           <div class='imageSpace'><a href='#/posts/{{post.id}}'><img class='postImage' src='{{post.picture}}'></a></div>
           <p>{{post.description}}</p>
-          <p><i class="fa fa-heart-o" id='like-{{post.id}}'></i> Likes: {{post.likes.length}}</p>
+          <div class='postStats'><div class='postStat'><i class="fa fa-heart-o" id='like-{{post.id}}'></i> <span class='statLikes'>{{post.likes.length}}</span><span class='hiddenLikeCounter' style='display:none'>0</span></div></div>
           <div class="comments">
             <h5>Discussion:</h5>
             {{#each post.comments}}
@@ -82,23 +82,23 @@
           <div class='userStats'>
             <div class='stat'>
               <p>Posts</p>
-              <p>{{user.posts.length}}</p>
+              <p id='statPosts'>{{user.posts.length}}</p>
             </div>
             <div class='stat'>
               <p>Following</p>
-              <p>{{user.following.length}}</p>
+              <p id='statFollowing'>{{user.following.length}}</p>
             </div>
             <div class='stat'>
               <p>Followers</p>
-              <p>{{user.followers.length}}</p>
+              <p id='statFollowers'>{{user.followers.length}}</p>
             </div>
             <div class='stat'>
               <p>Liked</p>
-              <p>{{user.likes.length}}</p>
+              <p id='statLiked'>{{user.likes.length}}</p>
             </div>
             <div class='stat'>
               <p>Saved</p>
-              <p>{{user.saved.length}}</p>
+              <p id='statSaved'>{{user.saved.length}}</p>
             </div>
           </div>
           {{#each user.posts}}
@@ -113,7 +113,7 @@
             <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
             <div class='imageSpace'><a href='#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
             <p>{{description}}</p>
-            <p><i class="fa fa-heart-o" id='like-{{id}}'></i> Likes: {{likes.length}}</p>
+            <div class='postStats'><div class='postStat'><i class="fa fa-heart-o" id='like-{{id}}'></i> <span class='statLikes'>{{likes.length}}</span><span class='hiddenLikeCounter' style='display:none'>0</span></div></div>
           </div>
           {{/each}}
         </div>

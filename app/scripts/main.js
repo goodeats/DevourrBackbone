@@ -179,6 +179,31 @@ Router = Backbone.Router.extend({
         App.liked(post_id);
         var likeCount = $(this).parent().children('.statLikes').html();
         trace(likeCount);
+
+        var likeCount = $(this).parent().children('.statLikes').html();
+        var likeCountToInt = (parseInt(likeCount));
+        var hiddenLikeCount = $(this).parent().children('.hiddenLikeCounter').html();
+        var hiddenLikeCountToInt = parseInt(hiddenLikeCount);
+
+        if (hiddenLikeCountToInt === 0){
+          hiddenLikeCountToInt++;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        } else if (hiddenLikeCountToInt === 1) {
+          hiddenLikeCountToInt--;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        }
+
+        var likeCounter = function(){
+          if (hiddenLikeCountToInt === 0){
+            var newCount = likeCountToInt - 1;
+          } else {
+            var newCount = likeCountToInt + 1;
+          }
+          return newCount;
+        }
+
+        var toggleLikeCount = $(this).parent().children('.statLikes').text(likeCounter());
+
         $(this).toggleClass('fa-heart-o fa-heart');
       });
 
@@ -189,6 +214,32 @@ Router = Backbone.Router.extend({
         App.liked(post_id);
         var likeCount = $(this).parent().children('.statLikes').html();
         trace(likeCount);
+
+        var likeCount = $(this).parent().children('.statLikes').html();
+        var likeCountToInt = (parseInt(likeCount));
+        var hiddenLikeCount = $(this).parent().children('.hiddenLikeCounter').html();
+        var hiddenLikeCountToInt = parseInt(hiddenLikeCount);
+
+        //toggle hidden like count
+        if (hiddenLikeCountToInt === 0){
+          hiddenLikeCountToInt++;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        } else if (hiddenLikeCountToInt === 1) {
+          hiddenLikeCountToInt--;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        }
+
+        var likeCounter = function(){
+          if (hiddenLikeCountToInt === 0){
+            var newCount = likeCountToInt + 1;
+          } else {
+            var newCount = likeCountToInt - 1;
+          }
+          return newCount;
+        }
+
+        var toggleLikeCount = $(this).parent().children('.statLikes').text(likeCounter());
+
         $(this).toggleClass('fa-heart fa-heart-o');
       });
 

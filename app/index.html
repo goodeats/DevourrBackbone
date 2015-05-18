@@ -100,7 +100,7 @@
           <h2><a href='#/posts/{{post.id}}'>{{post.title}}</a></h2>
           <div class='imageSpace'><a href='#/posts/{{post.id}}'><img class='postImage' src='{{post.picture}}'></a></div>
           <p>{{post.description}}</p>
-          <p><i class="fa fa-heart-o" id='like-{{post.id}}'></i> Likes: {{post.likes.length}}</p>
+          <div class='postStats'><div class='postStat'><i class="fa fa-heart-o" id='like-{{post.id}}'></i> <span class='statLikes'>{{post.likes.length}}</span><span class='hiddenLikeCounter' style='display:none'>0</span></div></div>
           <div class="comments">
             <h5>Discussion:</h5>
             {{#each post.comments}}

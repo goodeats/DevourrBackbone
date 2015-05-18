@@ -79,6 +79,43 @@ Router = Backbone.Router.extend({
         var point = $thisLike.lastIndexOf('-');
         var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
         App.liked(post_id);
+
+        var likeCount = $(this).parent().children('.statLikes').html();
+        var likeCountToInt = (parseInt(likeCount));
+        var hiddenLikeCount = $(this).parent().children('.hiddenLikeCounter').html();
+        var hiddenLikeCountToInt = parseInt(hiddenLikeCount);
+        var userLikedCount = $('#statLiked').html();
+        var userLikedCountToInt = parseInt(userLikedCount);
+
+        if (hiddenLikeCountToInt === 0){
+          hiddenLikeCountToInt++;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        } else if (hiddenLikeCountToInt === 1) {
+          hiddenLikeCountToInt--;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        }
+
+        var likeCounter = function(){
+          if (hiddenLikeCountToInt === 0){
+            var newCount = likeCountToInt - 1;
+          } else {
+            var newCount = likeCountToInt + 1;
+          }
+          return newCount;
+        }
+
+        var userLikeCounter = function(){
+          if (hiddenLikeCountToInt === 0){
+            var newCount = userLikedCountToInt - 1;
+          } else {
+            var newCount = userLikedCountToInt + 1;
+          }
+          return newCount;
+        }
+        $('#statLiked').text(userLikeCounter());
+
+        var toggleLikeCount = $(this).parent().children('.statLikes').text(likeCounter());
+
         $(this).toggleClass('fa-heart-o fa-heart');
       });
 
@@ -87,6 +124,45 @@ Router = Backbone.Router.extend({
         var point = $thisUnlike.lastIndexOf('-');
         var post_id = parseInt($thisUnlike.substring(point+1, $thisUnlike.length));
         App.liked(post_id);
+
+        var likeCount = $(this).parent().children('.statLikes').html();
+        var likeCountToInt = (parseInt(likeCount));
+        var hiddenLikeCount = $(this).parent().children('.hiddenLikeCounter').html();
+        var hiddenLikeCountToInt = parseInt(hiddenLikeCount);
+        var userLikedCount = $('#statLiked').html();
+        var userLikedCountToInt = parseInt(userLikedCount);
+
+
+        //toggle hidden like count
+        if (hiddenLikeCountToInt === 0){
+          hiddenLikeCountToInt++;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        } else if (hiddenLikeCountToInt === 1) {
+          hiddenLikeCountToInt--;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        }
+
+        var likeCounter = function(){
+          if (hiddenLikeCountToInt === 0){
+            var newCount = likeCountToInt + 1;
+          } else {
+            var newCount = likeCountToInt - 1;
+          }
+          return newCount;
+        }
+
+        var userLikeCounter = function(){
+          if (hiddenLikeCountToInt === 1){
+            var newCount = userLikedCountToInt - 1;
+          } else {
+            var newCount = userLikedCountToInt + 1;
+          }
+          return newCount;
+        }
+        $('#statLiked').text(userLikeCounter());
+
+        var toggleLikeCount = $(this).parent().children('.statLikes').text(likeCounter());
+
         $(this).toggleClass('fa-heart fa-heart-o');
       });
 
@@ -188,9 +264,11 @@ Router = Backbone.Router.extend({
         if (hiddenLikeCountToInt === 0){
           hiddenLikeCountToInt++;
           $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+
         } else if (hiddenLikeCountToInt === 1) {
           hiddenLikeCountToInt--;
           $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+
         }
 
         var likeCounter = function(){

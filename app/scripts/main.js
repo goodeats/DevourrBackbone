@@ -179,7 +179,6 @@ Router = Backbone.Router.extend({
         App.liked(post_id);
         var likeCount = $(this).parent().children('.statLikes').html();
         trace(likeCount);
-        // debugger
         $(this).toggleClass('fa-heart-o fa-heart');
       });
 
@@ -190,7 +189,6 @@ Router = Backbone.Router.extend({
         App.liked(post_id);
         var likeCount = $(this).parent().children('.statLikes').html();
         trace(likeCount);
-        // debugger
         $(this).toggleClass('fa-heart fa-heart-o');
       });
 

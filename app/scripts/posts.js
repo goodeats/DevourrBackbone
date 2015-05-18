@@ -36,7 +36,6 @@ App = (function(module){
         }
       };
 
-      var counter = 0;
       $('.fa-heart').on('click', function(){
         var $thisUnlike = ($(this).attr('id'));;
         var point = $thisUnlike.lastIndexOf('-');
@@ -45,21 +44,24 @@ App = (function(module){
 
         var likeCount = $(this).parent().children('.statLikes').html();
         var likeCountToInt = (parseInt(likeCount));
+        var hiddenLikeCount = $(this).parent().children('.hiddenLikeCounter').html();
+        var hiddenLikeCountToInt = parseInt(hiddenLikeCount);
 
+        //toggle hidden like count
+        if (hiddenLikeCountToInt === 0){
+          hiddenLikeCountToInt++;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        } else if (hiddenLikeCountToInt === 1) {
+          hiddenLikeCountToInt--;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        }
 
         var likeCounter = function(){
-          if (counter === 0){
-            trace('heres what the counter starts as: ' + counter);
-            var newCount = likeCountToInt - 1;
-            counter++;
-            trace('counter changed to ' + counter);
-          } else {
-            trace('heres what the counter starts as: ' + counter);
+          if (hiddenLikeCountToInt === 0){
             var newCount = likeCountToInt + 1;
-            counter--;
-            trace('counter changed to ' + counter);
+          } else {
+            var newCount = likeCountToInt - 1;
           }
-          trace("new counter is " + counter);
           return newCount;
         }
 
@@ -77,21 +79,23 @@ App = (function(module){
 
         var likeCount = $(this).parent().children('.statLikes').html();
         var likeCountToInt = (parseInt(likeCount));
+        var hiddenLikeCount = $(this).parent().children('.hiddenLikeCounter').html();
+        var hiddenLikeCountToInt = parseInt(hiddenLikeCount);
 
+        if (hiddenLikeCountToInt === 0){
+          hiddenLikeCountToInt++;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        } else if (hiddenLikeCountToInt === 1) {
+          hiddenLikeCountToInt--;
+          $(this).parent().children('.hiddenLikeCounter').text(hiddenLikeCountToInt);
+        }
 
         var likeCounter = function(){
-          if (counter === 0){
-            trace('heres what the counter starts as: ' + counter);
-            var newCount = likeCountToInt + 1;
-            counter++;
-            trace('counter changed to ' + counter);
-          } else {
-            trace('heres what the counter starts as: ' + counter);
+          if (hiddenLikeCountToInt === 0){
             var newCount = likeCountToInt - 1;
-            counter--;
-            trace('counter changed to ' + counter);
+          } else {
+            var newCount = likeCountToInt + 1;
           }
-          trace("new counter is " + counter);
           return newCount;
         }
 

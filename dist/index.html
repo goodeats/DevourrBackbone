@@ -5,7 +5,7 @@
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/125cc5ae.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
+      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/0edc215a.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
       {{#each posts}}
         <div class='post' id='post-{{id}}'>
           <div class='postUserProfile'>
@@ -18,12 +18,13 @@
           <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
           <div class='imageSpace'><a href='#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
           <p>{{description}}</p>
-          <div class='postStats'><div class='postStat'><i class="fa fa-heart-o" id='like-{{id}}'></i> Likes: {{likes.length}}</div></div>
+          <div class='postStats'><div class='postStat'><i class="fa fa-heart-o" id='like-{{id}}'></i> <span class='statLikes'>{{likes.length}}</span></div></div>
         </div>
       {{/each}}
       </div></script> <script type=text/x-handlebars-template id=postTemplate><div class='pageLinkSpace'>
         <a class='pageLink' href='#/posts'>Back to Posts</a>
         <a class='pageLink' href='#/posts/{{post.id}}' id='edit-post'>Edit Post</a>
+        <a class='pageLink' href='#/posts/{{post.id}}' id='delete-post'>Delete Post</a>
       </div>
 
       <div class='posts'>

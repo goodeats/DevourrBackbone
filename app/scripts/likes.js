@@ -29,8 +29,6 @@ App = (function(module){
     })
     .fail(function() {
       console.log("ERROR!: could not determine if this has been liked yet");
-    })
-    .always(function() {
     });
 
   };
@@ -66,8 +64,6 @@ App = (function(module){
     })
     .fail(function() {
       console.log("unlike error" + response);
-    })
-    .always(function() {
     });
 
   };

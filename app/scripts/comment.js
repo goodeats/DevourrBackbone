@@ -38,23 +38,21 @@ App = (function(module){
         }
       },
       complete: function(jqXHR,textStatus){
-        trace(jqXHR, textStatus, "complete comment!!");
+        // trace(jqXHR, textStatus, "complete comment!!");
       },
       success: function(data, textStatus, jqXHR){
         // router.navigate("posts",{trigger: true});
         window.location.reload(); //would prefer not to have to reload, but this will do for now
-        trace(data,textStatus, jqXHR, "successful comment!!");
+        // trace(data,textStatus, jqXHR, "successful comment!!");
       },
       error: function(jqXHR,error,exception){
         trace(jqXHR,error,exception);
       },
     }).done(function(response){
-      trace(response, "posted comment!!");
+      // trace(response, "posted comment!!");
     }).fail(function(jqXHR, textStatus, thrownError){
       trace(jqXHR, textStatus, thrownError);
       router.navigate("posts",{trigger: true});
-    }).always(function(response){
-      trace(response);
     });
   };
 
@@ -67,14 +65,11 @@ App = (function(module){
       type: 'DELETE',
     })
     .done(function() {
-      console.log("success");
+      // console.log("success");
       window.location.reload();
     })
     .fail(function() {
-      console.log("error");
-    })
-    .always(function() {
-      console.log("complete");
+      console.log("error: could not delete comment");
     });
 
   }

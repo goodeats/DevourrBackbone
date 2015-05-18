@@ -55,7 +55,6 @@ Router = Backbone.Router.extend({
         var locate = window.location.hash;
         var point = locate.lastIndexOf('/');
         var user_id = parseInt(locate.substring(point+1, locate.length));
-        trace('Editing user ID: ' + user_id + "!");
         var data = response.user;
         App.edituser(user_id,data);
       });
@@ -94,8 +93,6 @@ Router = Backbone.Router.extend({
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       trace('Backbone user: fail!', jqXHR, textStatus, errorThrown);
-    }).always(function(response) {
-      trace(response);
     });
   },
 
@@ -122,9 +119,53 @@ Router = Backbone.Router.extend({
         var locate = window.location.hash;
         var point = locate.lastIndexOf('/');
         var post_id = parseInt(locate.substring(point+1, locate.length));
-        trace('Editing post ID: ' + post_id + "!");
         var data = response.post;
         App.editpost(post_id,data);
+      });
+
+      $('#delete-post').on('click', function(){
+        var locate = window.location.hash;
+        var point = locate.lastIndexOf('/');
+        var post_id = parseInt(locate.substring(point+1, locate.length));
+        trace('Deleting post ID: ' + post_id + "!");
+        var data = response.post;
+        trace(data);
+
+
+
+        // jQuery.alerts.okButton = 'Yes';
+        // jQuery.alerts.cancelButton = 'No';
+        // confirm('Are you sure??',  '', function(r){
+        //   if (r === true) {
+        //     App.deletePost(post_id,data);
+        //   }
+        // });
+
+      var confirmed = false;
+      function confirmDialog(obj){
+        if(!confirmed){
+          $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height:140,
+            modal: true,
+            buttons: {
+              "Yes": function()
+              {
+                $( this ).dialog( "close" );
+                confirmed = true; obj.click();
+              },
+              "No": function()
+              {
+                $( this ).dialog( "close" );
+              }
+            }
+          });
+        }
+
+        return confirmed;
+      }
+
+
       });
 
       $('#comment-submit').on('click', function(){
@@ -179,8 +220,6 @@ Router = Backbone.Router.extend({
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       trace('Backbone post: fail!', jqXHR, textStatus, errorThrown);
-    }).always(function(response) {
-      trace(response);
     });
   },
 
@@ -220,29 +259,24 @@ App.newPostParams = function(title, description, picture, location, user_id, rou
       },
     },
     complete: function(jqXHR,textStatus){
-      trace(jqXHR, textStatus, "complete post!!");
+      // trace(jqXHR, textStatus, "complete post!!");
     },
     success: function(data, textStatus, jqXHR){
       router.navigate("posts/" + data.post.id,{trigger: true});
-      trace(data,textStatus, jqXHR, "successful post!!");
+      // trace(data,textStatus, jqXHR, "successful post!!");
     },
     error: function(jqXHR,error,exception){
       trace("Backbone newpost: fail",jqXHR,error,exception);
     },
   }).done(function(response){
-    trace(response, "posted post!!");
+    // trace(response, "posted post!!");
   }).fail(function(jqXHR, textStatus, thrownError){
     trace(jqXHR, textStatus, thrownError);
-  }).always(function(response){
-    trace(response);
   });
 };
 
 App.editpost = function(post_id,data){
-  trace('Post ID came thru on the router: ' + post_id + "!")
   $('#container').empty().load('partials/edit-post-form.html', function(response,status,xhr){
-    trace('data' + data);
-    trace('response' + response);
     var $editform = $('#edit-post-form');
     $editform.find("input[name='post-title']").val(data.title);
     $editform.find("input[name='post-description']").val(data.description);
@@ -255,7 +289,6 @@ App.editpost = function(post_id,data){
 },
 
 App.editPostForm = function(e,$editform,post_id){
-  trace('Post ID came thru on the editPostForm: ' + post_id + "!");
   var locate = window.location.hash;
   var point = locate.lastIndexOf('/');
   var post_id = parseInt(locate.substring(point+1, locate.length));
@@ -283,22 +316,20 @@ App.editPostParams = function(title, description, picture, location, user_id, po
       },
     },
     complete: function(jqXHR,textStatus){
-      trace(jqXHR, textStatus, "complete post!!");
+      // trace(jqXHR, textStatus, "complete post!!");
     },
     success: function(data, textStatus, jqXHR){
       router.navigate("posts",{trigger: true});
-      trace(data,textStatus, jqXHR, "successful post!!");
+      // trace(data,textStatus, jqXHR, "successful post!!");
     },
     error: function(jqXHR,error,exception){
       trace("Backbone editpost: fail",jqXHR,error,exception);
     },
   }).done(function(response){
-    trace(response, "posted!!");
+    // trace(response, "posted!!");
   }).fail(function(jqXHR, textStatus, thrownError){
     trace(jqXHR, textStatus, thrownError);
     router.navigate("failed edit of post",{trigger: true});
-  }).always(function(response){
-    trace(response);
   });
 };
 

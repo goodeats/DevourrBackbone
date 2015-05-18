@@ -55,8 +55,6 @@ App = (function(module){
 
     }).fail(function(jqXHR, textStatus, errorThrown) {
       trace('Backbone posts: fail!', jqXHR, textStatus, errorThrown);
-    }).always(function(response) {
-      trace(response);
     });
   };
 

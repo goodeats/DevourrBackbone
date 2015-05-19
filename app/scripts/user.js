@@ -7,6 +7,12 @@ var App = App || {
 
 App = (function(module){
 
+  module.findUserId = function(){
+    var locate = window.location.hash;
+    var point = locate.lastIndexOf('/');
+    return parseInt(locate.substring(point+1, locate.length));
+  };
+
   module.findPostId = function(thisPost){
     var $thisLike = thisPost.attr('id');
     var point = $thisLike.lastIndexOf('-');
@@ -45,9 +51,7 @@ App = (function(module){
       }));
 
       $('#edit-user').on('click', function(){
-        var locate = window.location.hash;
-        var point = locate.lastIndexOf('/');
-        var user_id = parseInt(locate.substring(point+1, locate.length));
+        var user_id = module.findUserId();
         var data = response.user;
         App.edituser(user_id,data);
       });
@@ -63,7 +67,6 @@ App = (function(module){
         $(this).toggleClass('fa-heart-o fa-heart');
 
         var currentUserLikeCount = module.findPostLikes($(this));
-        var hiddenLikeToggle = module.findHiddenLikeToggle($(this));
         var toggleStatus = module.hiddenToggleStatus(module.findHiddenLikeToggle($(this)), $(this));
 
         var likeCounter = function(){
@@ -86,8 +89,6 @@ App = (function(module){
           return newCount;
         }
         $('#statLiked').text(userLikeCounter());
-
-
       });
 
       var $unlike = $('.fa-heart');
@@ -99,7 +100,6 @@ App = (function(module){
         $(this).toggleClass('fa-heart-o fa-heart');
 
         var currentUserLikeCount = module.findPostLikes($(this));
-        var hiddenLikeToggle = module.findHiddenLikeToggle($(this));
         var toggleStatus = module.hiddenToggleStatus(module.findHiddenLikeToggle($(this)), $(this));
 
         var likeCounter = function(){
@@ -114,15 +114,14 @@ App = (function(module){
 
         var userTotalLikeCount = parseInt($('#statLiked').html());
         var userLikeCounter = function(){
-          if (toggleStatus === 1){
-            var newCount = userTotalLikeCount + 1;
-          } else {
+          if (toggleStatus === 0){
             var newCount = userTotalLikeCount - 1;
+          } else {
+            var newCount = userTotalLikeCount + 1;
           }
           return newCount;
         }
         $('#statLiked').text(userLikeCounter());
-
       });
 
     })
@@ -197,3 +196,9 @@ App = (function(module){
   return module;
 
 })(App || {});
+
+$(document).ready(function(){
+
+
+
+});

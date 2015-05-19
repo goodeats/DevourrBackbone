@@ -7,6 +7,12 @@ var App = App || {
 
 App = (function(module){
 
+  module.findPostId = function(){
+    var locate = window.location.hash;
+    var point = locate.lastIndexOf('/');
+    return parseInt(locate.substring(point+1, locate.length));
+  }
+
   module.getPost = function(id){
     trace('this post yo');
     $container.empty();
@@ -25,38 +31,29 @@ App = (function(module){
       var currentUser = 1;
 
       $('#edit-post').on('click', function(){
-        var locate = window.location.hash;
-        var point = locate.lastIndexOf('/');
-        var post_id = parseInt(locate.substring(point+1, locate.length));
-        var data = response.post;
-        App.editpost(post_id,data);
+        App.editpost(module.findPostId(), response.post);
       });
 
       $('#delete-post').on('click', function(){
-        var locate = window.location.hash;
-        var point = locate.lastIndexOf('/');
-        var post_id = parseInt(locate.substring(point+1, locate.length));
-        var data = response.post;
-
         var confirm = window.confirm("Do you want to delete this post?");
         if(confirm == true){
-          App.deletePost(post_id,data);
+          App.deletePost(module.findPostId(), response.post);
         }
-
       });
 
       $('#comment-submit').on('click', function(){
         App.addComment();
       });
 
-      var $deleteComment = $('.deleteComment');
-      $deleteComment.hide();
+      $('.deleteComment').hide();
       var $comment = $('.commentsText');
+
       $comment.mouseenter(function(){
-        var $thisDelete = $deleteComment.eq($(this).index($comment));
+        var $thisDelete = $(this).children('p').children('span');
+        trace('parent: ' + $thisDelete.parent());
         $thisDelete.show();
       }).mouseleave(function(){
-        var $thisDelete = $deleteComment.eq($(this).index($comment));
+        var $thisDelete = $(this).children('p').children('span');
         $thisDelete.hide();
       });
 
@@ -74,7 +71,7 @@ App = (function(module){
         var $thisLike = ($(this).attr('id'));
         var point = $thisLike.lastIndexOf('-');
         var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
-        App.liked(post_id);
+        App.checkIfLiked(post_id);
 
         var likeCount = $(this).parent().children('.statLikes').html();
         var likeCountToInt = (parseInt(likeCount));
@@ -277,3 +274,9 @@ App = (function(module){
   return module;
 
 })(App || {});
+
+$(document).ready(function(){
+
+
+
+});

@@ -13,7 +13,7 @@ App = (function(module){
     return parseInt(locate.substring(point+1, locate.length));
   };
 
-  module.findPostId = function(thisPost){
+  module.findUserPostId = function(thisPost){
     var $thisLike = thisPost.attr('id');
     var point = $thisLike.lastIndexOf('-');
     return parseInt($thisLike.substring(point+1, $thisLike.length));
@@ -62,7 +62,7 @@ App = (function(module){
 
       var $like = $('.fa-heart-o');
       $like.on('click', function(){
-        var post_id = module.findPostId($(this));
+        var post_id = module.findUserPostId($(this));
         App.checkIfLiked(post_id);
         $(this).toggleClass('fa-heart-o fa-heart');
 
@@ -93,7 +93,7 @@ App = (function(module){
 
       var $unlike = $('.fa-heart');
       $unlike.on('click', function(){
-        var post_id = module.findPostId($(this));
+        var post_id = module.findUserPostId($(this));
         App.checkIfLiked(post_id);
 
         // the remaining code updates the page without the need to refresh

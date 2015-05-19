@@ -50,6 +50,15 @@ Router = Backbone.Router.extend({
 
 });
 
+var setClickHandlers = function(){
+  $('#edit-post').on('click', function(){
+    // var post_id = App.findPostId();
+    // var data = response.post;
+    trace('edit');
+    // App.editpost(App.findPostId(),App.getPost(id).response.post);
+  });
+};
+
 
 var router = new Router();
 Backbone.history.start();
@@ -57,5 +66,6 @@ Backbone.history.start();
 $(document).ready(function(){
 
   $header.empty().load('partials/nav.html');
+  setClickHandlers();
 
 });

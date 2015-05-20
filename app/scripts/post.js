@@ -14,7 +14,6 @@ App = (function(module){
   }
 
   module.getPost = function(id){
-    trace('this post yo');
     $container.empty();
     $.ajax({
       url: App.url + '/posts/' + id,

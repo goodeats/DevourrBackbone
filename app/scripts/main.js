@@ -24,6 +24,7 @@ Router = Backbone.Router.extend({
     'posts': 'posts',
     'posts/:id': 'post',
     'new-post': 'newpost',
+    'mylikes': 'mylikes',
   },
 
   home: function(){
@@ -47,6 +48,10 @@ Router = Backbone.Router.extend({
   newpost: function(){
     App.newPost();
   },
+
+  mylikes: function(){
+    App.getMyLikes();
+  }
 
 });
 

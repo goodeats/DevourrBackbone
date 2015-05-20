@@ -45,24 +45,31 @@ App = (function(module){
         App.addComment();
       });
 
-      $('.deleteComment').hide();
+      var $deleteComment = $('.deleteComment');
+      $deleteComment.hide();
       var $comment = $('.commentsText');
 
       $comment.mouseenter(function(){
         var $thisDelete = $(this).children('p').children('span');
         trace('parent: ' + $thisDelete.parent());
-        $thisDelete.show();
+
+        $thisDelete.show().on('click', function(){
+          var locate = $(this).attr('id');
+          var point = locate.lastIndexOf('-');
+          var comment_id = parseInt(locate.substring(point+1, locate.length));
+          App.deleteComment(comment_id);
+        });
       }).mouseleave(function(){
         var $thisDelete = $(this).children('p').children('span');
         $thisDelete.hide();
       });
 
-      $deleteComment.on('click', function(){
-        var locate = $comment.attr('id');
-        var point = locate.lastIndexOf('-');
-        var comment_id = parseInt(locate.substring(point+1, locate.length));
-        App.deleteComment(comment_id);
-      });
+      // $deleteComment.on('click', function(){
+      //   var locate = $comment.attr('id');
+      //   var point = locate.lastIndexOf('-');
+      //   var comment_id = parseInt(locate.substring(point+1, locate.length));
+      //   App.deleteComment(comment_id);
+      // });
 
       App.loadPostLike(response);
 

@@ -57,7 +57,6 @@ App = (function(module){
   };
 
   module.deleteComment = function(id){
-    debugger
     var locate = window.location.hash;
     var point = locate.lastIndexOf('/');
     var post_id = parseInt(locate.substring(point+1, locate.length));

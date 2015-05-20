@@ -30,7 +30,7 @@ App = (function(module){
         var $thisUnlike = ($(this).attr('id'));;
         var point = $thisUnlike.lastIndexOf('-');
         var post_id = parseInt($thisUnlike.substring(point+1, $thisUnlike.length));
-        App.liked(post_id);
+        App.checkIfLiked(post_id);
 
         var likeCount = $(this).parent().children('.statLikes').html();
         var likeCountToInt = (parseInt(likeCount));
@@ -65,7 +65,7 @@ App = (function(module){
         var $thisLike = ($(this).attr('id'));;
         var point = $thisLike.lastIndexOf('-');
         var post_id = parseInt($thisLike.substring(point+1, $thisLike.length));
-        App.liked(post_id);
+        App.checkIfLiked(post_id);
 
         var likeCount = $(this).parent().children('.statLikes').html();
         var likeCountToInt = (parseInt(likeCount));

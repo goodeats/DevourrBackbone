@@ -64,13 +64,6 @@ App = (function(module){
         $thisDelete.hide();
       });
 
-      // $deleteComment.on('click', function(){
-      //   var locate = $comment.attr('id');
-      //   var point = locate.lastIndexOf('-');
-      //   var comment_id = parseInt(locate.substring(point+1, locate.length));
-      //   App.deleteComment(comment_id);
-      // });
-
       App.loadPostLike(response);
 
       var $like = $('.fa-heart-o');

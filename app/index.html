@@ -147,24 +147,34 @@
         <div class='posts'>
           <div class='userStats'>
             <div class='stat'>
-              <p>Posts</p>
-              <p id='statPosts'>{{user.posts.length}}</p>
+              <a class='userStatLinks' href='#/users/{{user.id}}'>
+                <p>Posts</p>
+                <p id='statPosts'>{{user.posts.length}}</p>
+              </a>
             </div>
             <div class='stat'>
-              <p>Following</p>
-              <p id='statFollowing'>{{user.following.length}}</p>
+              <a class='userStatLinks' href='#/users/{{user.id}}'>
+                <p>Following</p>
+                <p id='statFollowing'>{{user.following.length}}</p>
+              </a>
             </div>
             <div class='stat'>
-              <p>Followers</p>
-              <p id='statFollowers'>{{user.followers.length}}</p>
+              <a class='userStatLinks' href='#/users/{{user.id}}'>
+                <p>Followers</p>
+                <p id='statFollowers'>{{user.followers.length}}</p>
+              </a>
             </div>
             <div class='stat'>
-              <p>Liked</p>
-              <p id='statLiked'>{{user.likes.length}}</p>
+              <a class='userStatLinks' href='#/mylikes'>
+                <p>Liked</p>
+                <p id='statLiked'>{{user.likes.length}}</p>
+              </a>
             </div>
             <div class='stat'>
-              <p>Saved</p>
-              <p id='statSaved'>{{user.saved.length}}</p>
+              <a class='userStatLinks' href='#/users/{{user.id}}'>
+                <p>Saved</p>
+                <p id='statSaved'>{{user.saved.length}}</p>
+              </a>
             </div>
           </div>
           {{#each user.posts}}

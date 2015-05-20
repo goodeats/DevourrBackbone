@@ -63,3 +63,25 @@
     flex-grow: 1;
   }
 }
+
+.stat:hover {
+  background: $light-yellow;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  :nth-child(2n+0){
+    font-weight: bold;
+  }
+  // font-weight: bold;
+}
+
+// http://stackoverflow.com/questions/556153/horiz-css-menu-text-shifting-on-bold-hover
+// .stat::after {
+//     display:block;
+//     content:attr(title);
+//     font-weight:bold;
+//     height:1px;
+//     color:transparent;
+//     overflow:hidden;
+//     visibility:hidden;
+//     margin-bottom:-1px;
+// }

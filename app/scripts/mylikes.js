@@ -14,9 +14,20 @@ App = (function(module){
       type: 'GET'
     }).done(function(response) {
       var template = Handlebars.compile($('#myLikesTemplate').html());
-      $container.html(template({
-        posts: response.posts
-      }));
+      var currentUser = 1;
+      var myLikesArray = [];
+      for (var i = 0; i < response.posts.length; i++) {
+        if (response.posts[i].likes.length > 0) {
+          jQuery.each(response.posts[i].likes, function(j, val) {
+            if (val.user_id === currentUser) {
+              myLikesArray.push(response.posts[i]);
+              $container.html(template({
+                posts: myLikesArray
+              }));
+            }
+          });
+        }
+      };
 
       var $post = $('.post');
       var $like = $('.fa-heart-o');

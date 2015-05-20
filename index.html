@@ -1,11 +1,11 @@
-<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=http://i.imgur.com/0Qf1HsS.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/2a4195f1.main.css> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <body> <!--[if lt IE 10]>
+<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Devourr</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=http://i.imgur.com/0Qf1HsS.png> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/8754af23.main.css> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <body> <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]--> <div id=header></div> <div id=container> <div class=centered> <img class=logo src=http://i.imgur.com/lJtLb4y.png> <div class=homeTagline> <h1>We are what we eat!</h1> <p>Check out some <a href=#/posts>posts</a> or see what this is all <a href=#/about>about</a>!</p> </div> </div> </div> <script src=scripts/f53edcc2.vendor.js></script> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --> <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/d11c7a72.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
+      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/c3090014.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
       {{#each posts}}
         <div class='post' id='post-{{id}}'>
           <div class='postUserProfile'>
@@ -81,24 +81,34 @@
         <div class='posts'>
           <div class='userStats'>
             <div class='stat'>
-              <p>Posts</p>
-              <p id='statPosts'>{{user.posts.length}}</p>
+              <a class='userStatLinks' href='#/users/{{user.id}}'>
+                <p>Posts</p>
+                <p id='statPosts'>{{user.posts.length}}</p>
+              </a>
             </div>
             <div class='stat'>
-              <p>Following</p>
-              <p id='statFollowing'>{{user.following.length}}</p>
+              <a class='userStatLinks' href='#/users/{{user.id}}'>
+                <p>Following</p>
+                <p id='statFollowing'>{{user.following.length}}</p>
+              </a>
             </div>
             <div class='stat'>
-              <p>Followers</p>
-              <p id='statFollowers'>{{user.followers.length}}</p>
+              <a class='userStatLinks' href='#/users/{{user.id}}'>
+                <p>Followers</p>
+                <p id='statFollowers'>{{user.followers.length}}</p>
+              </a>
             </div>
             <div class='stat'>
-              <p>Liked</p>
-              <p id='statLiked'>{{user.likes.length}}</p>
+              <a class='userStatLinks' href='#/mylikes'>
+                <p>Liked</p>
+                <p id='statLiked'>{{user.likes.length}}</p>
+              </a>
             </div>
             <div class='stat'>
-              <p>Saved</p>
-              <p id='statSaved'>{{user.saved.length}}</p>
+              <a class='userStatLinks' href='#/users/{{user.id}}'>
+                <p>Saved</p>
+                <p id='statSaved'>{{user.saved.length}}</p>
+              </a>
             </div>
           </div>
           {{#each user.posts}}
@@ -117,4 +127,23 @@
           </div>
           {{/each}}
         </div>
+      </div></script> <script type=text/x-handlebars-template id=myLikesTemplate><div class='pageLinkSpace'>
+        <a class='pageLink' href='#/posts'>Back to Posts</a>
+      </div>
+      <div class='posts'>
+      {{#each posts}}
+        <div class='post' id='post-{{id}}'>
+          <div class='postUserProfile'>
+            <a href='#/users/{{user.id}}'><img class='postProfileImage' src='{{user.avatar}}'></a>
+            <div class='postUserInfo'>
+              <span><a href='#/users/{{user.id}}'>@{{user.username}}</a></span>
+              <span><i class="fa fa-map-marker"></i> {{location}}</span>
+            </div>
+          </div>
+          <h2><a href='#/posts/{{id}}'>{{title}}</a></h2>
+          <div class='imageSpace'><a href='#/posts/{{id}}'><img class='postImage' src='{{picture}}'></a></div>
+          <p>{{description}}</p>
+          <div class='postStats'><div class='postStat'><i class="fa fa-heart-o" id='like-{{id}}'></i> <span class='statLikes'>{{likes.length}}</span><span class='hiddenLikeCounter' style='display:none'>0</span></div></div>
+        </div>
+      {{/each}}
       </div></script>

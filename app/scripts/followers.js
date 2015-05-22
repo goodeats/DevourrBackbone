@@ -2,8 +2,7 @@
 /*global devourr, $*/
 
 var App = App || {
-  // url: 'https://devourapi.herokuapp.com'
-  url: 'http://localhost:3000'
+  url: 'https://devourapi.herokuapp.com'
 };
 
 App = (function(module){
@@ -12,7 +11,7 @@ App = (function(module){
     trace('I am gonna follow user #' + id);
     var currentUser = 1;
     $.ajax({
-      url: 'http://localhost:3000' + '/users/' + currentUser + '/follows',
+      url: App.url + '/users/' + currentUser + '/follows',
       type: 'POST',
       data: {
         follow: {

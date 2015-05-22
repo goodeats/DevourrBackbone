@@ -59,6 +59,7 @@
     <script src="scripts/user.js"></script>
     <script src="scripts/likes.js"></script>
     <script src="scripts/mylikes.js"></script>
+    <script src="scripts/followers.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
@@ -142,6 +143,7 @@
             <p><a href='{{user.website}}' target='_blank'>{{user.website}}</a></p>
             <p>{{user.location}}</p>
           </div>
+          <a class='pageLink' href='#/users/{{user.id}}' id='follow-user'>Follow</a>
         </div>
 
         <div class='posts'>

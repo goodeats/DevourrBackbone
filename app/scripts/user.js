@@ -59,6 +59,7 @@ App = (function(module){
       var currentUser = 1;
 
       App.loadUserLikes(response);
+      App.getFollowers();
 
       var $like = $('.fa-heart-o');
       $like.on('click', function(){

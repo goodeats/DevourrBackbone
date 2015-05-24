@@ -125,10 +125,6 @@ App = (function(module){
         $('#statLiked').text(userLikeCounter());
       });
 
-      $('#follow-user').on('click', function(){
-        App.newFollow(module.findUserId());
-      });
-
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       trace('Backbone user: fail!', jqXHR, textStatus, errorThrown);

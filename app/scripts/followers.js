@@ -8,7 +8,6 @@ var App = App || {
 App = (function(module){
 
   module.newFollow = function(id){
-    trace('I am gonna follow user #' + id);
     var currentUser = 1;
     $.ajax({
       url: App.url + '/users/' + currentUser + '/follows',
@@ -35,19 +34,15 @@ App = (function(module){
       type: 'GET',
     })
     .done(function(response) {
-      trace(response);
-      module.showUserFollowers(response);
-
+      module.showUserFollowerCount(response);
+      module.checkIfFollowing(response);
     })
     .fail(function() {
       console.log("error");
-    })
-    .always(function() {
-      console.log("complete");
     });
   };
 
-  module.showUserFollowers = function(response){
+  module.showUserFollowerCount = function(response){
     var $followers = $('#statFollowers');
     var myFollowers = [];
     for (var i = 0; i < response.follows.length; i++) {
@@ -56,6 +51,43 @@ App = (function(module){
       }
     };
     $followers.text(myFollowers.length);
+  };
+
+  module.checkIfFollowing = function(response){
+    var currentUser = 1;
+    var userFollowers = [];
+    for (var i = 0; i < response.follows.length; i++) {
+      if (response.follows[i].follow_user_id === App.findUserId()
+        && response.follows[i].user_id === currentUser){//lost internet
+        var $thisFollow = response.follows[i].id;
+
+        $('#follow-user').text('Unfollow');
+
+        $('#unfollow-user').on('click', function(){
+          App.deleteFollow($thisFollow);
+        });
+      } else {
+        $('#follow-user').on('click', function(){
+          App.newFollow(module.findUserId());
+        });
+      }
+    };
+  };
+
+  module.deleteFollow = function(follow_id){
+    var currentUser = 1;
+    trace('ima unfollow u');
+    $.ajax({
+      url: App.url + '/users/' + currentUser + '/follows/' + follow_id,
+      type: 'DELETE',
+    })
+    .done(function() {
+      console.log("successful unfollow");
+    })
+    .fail(function() {
+      console.log("error deleting follower");
+    });
+
   };
 
   return module;

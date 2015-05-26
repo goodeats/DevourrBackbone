@@ -5,7 +5,7 @@
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/c3090014.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
+      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/2b2f3bef.main.js></script> <script type=text/x-handlebars-template id=postsTemplate><div class='posts'>
       {{#each posts}}
         <div class='post' id='post-{{id}}'>
           <div class='postUserProfile'>
@@ -76,6 +76,8 @@
             <p><a href='{{user.website}}' target='_blank'>{{user.website}}</a></p>
             <p>{{user.location}}</p>
           </div>
+          <a class='pageLink' href='#/users/{{user.id}}' id='follow-user'>Follow</a>
+          <a class='pageLink' href='#/users/{{user.id}}' id='unfollow-user'>Unfollow</a>
         </div>
 
         <div class='posts'>
@@ -89,13 +91,13 @@
             <div class='stat'>
               <a class='userStatLinks' href='#/users/{{user.id}}'>
                 <p>Following</p>
-                <p id='statFollowing'>{{user.following.length}}</p>
+                <p id='statFollowing'>{{user.follows.length}}</p>
               </a>
             </div>
             <div class='stat'>
               <a class='userStatLinks' href='#/users/{{user.id}}'>
                 <p>Followers</p>
-                <p id='statFollowers'>{{user.followers.length}}</p>
+                <p id='statFollowers'></p>
               </a>
             </div>
             <div class='stat'>

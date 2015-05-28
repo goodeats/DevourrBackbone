@@ -14,6 +14,8 @@ App = (function(module){
       type: 'GET'
     }).done(function(response) {
       var template = Handlebars.compile($('#postsTemplate').html());
+
+      var feed = response.posts.reverse();
       $container.html(template({
         posts: response.posts
       }));
